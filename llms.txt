@@ -1,0 +1,26 @@
+# Realty 25 AZ
+
+> Property management for single-family rentals in North Scottsdale and nearby, Arizona.
+> Designated Broker: Alik Levin. Phone: 480.920.2273. Email: info@realty25az.com.
+
+Flat monthly management: $125 per door ($185 for rents over $4,000/mo). $0 when vacant.
+Placement: 4.5% of gross rent. Lease renewal: $250. $0 markup on repairs. No long-term contracts.
+
+## Pages
+- [Home](https://realty25az.com/): Overview and contact
+- [Pricing](https://realty25az.com/pricing/): Management and walkthrough fees
+- [FAQ](https://realty25az.com/faq/): Common owner questions
+- [Reviews](https://realty25az.com/reviews/): Owner reviews
+- [About](https://realty25az.com/about/): Alik Levin, Designated Broker
+- [Service Area](https://realty25az.com/service-area/): North Scottsdale and nearby
+- [Agents](https://realty25az.com/agents/): Agent referral program
+- [Tools](https://realty25az.com/tools/): Cash flow, equity, RentalComp
+- [Cash Flow Calculator](https://realty25az.com/tools/cash-flow-calculator/)
+- [Equity Calculator](https://realty25az.com/tools/equity-calculator/)
+- [RentalComp](https://realty25az.com/tools/rental-comp/): Rent comps tool
+- [Owner Guides](https://realty25az.com/guides/): Coming soon
+- [Privacy](https://realty25az.com/privacy/)
+- [Owner portal](https://prcllc.atlassian.net/servicedesk/customer/user/requests?page=1): Existing clients
+
+## Optional
+- Contact by SMS or phone rather than a long form.
