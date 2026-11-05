@@ -4,7 +4,7 @@ agent-referral-modal.js
 ============================================================
 Version : 1.0
 Date    : 2026-08-27
-Author  : Alik Levin / Realty 25 AZ
+Author  : Realty 25 AZ
 
 Purpose : Modal controller for Agent Referrals "See how it
           works" flow diagram lightbox on realty25az.com

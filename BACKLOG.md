@@ -1,6 +1,6 @@
 # Backlog
 
-## Shelved: JSON export/import on calculators (Alik decision Nov 4, 2026)
+## Shelved: JSON export/import on calculators (owner decision Nov 4, 2026)
 
 1. Feature: Export JSON / Import JSON for saved calculator scenarios.
 2. Where it lived on the live r25 web:
@@ -10,10 +10,10 @@
    1. `assets/js/ric.js` — removed `doExport` / `handleImportFile`, the hidden file input, Export/Import toolbar controls, and their event listeners. LocalStorage save/load/overwrite/delete and print remain.
    2. `assets/js/eec.js` — same removals for the equity calculator.
 4. Not present in `rentcomps` / RentalComp beyond ordinary `JSON.parse` / `JSON.stringify` for API and localStorage caches (kept).
-5. Status: shelved; do not re-add without Alik asking.
+5. Status: shelved; do not re-add unless the owner asks.
 
 ## Other future items
 
 1. Owner Guides listicle content (hub stubs only today).
 2. Compress `assets/img/AgentReferrals-HowItWorks.png` (about 1.2 MB) to WebP under 150 KB.
-3. RentalComp Code of Ethics review of live comps with full addresses and Zillow links (flagged for Alik; fetch behavior unchanged).
+3. RentalComp Code of Ethics review of live comps with full addresses and Zillow links (flagged for the owner; fetch behavior unchanged).

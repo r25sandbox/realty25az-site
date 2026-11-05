@@ -35,12 +35,12 @@
   function fm(n){ return '$'+Math.round(Math.abs(n)).toLocaleString(); }
   function fms(n){ return (n<0?'-':'')+fm(n); }
   function pc(n){ return n.toFixed(2)+'%'; }
-  function set(id,txt,col){ var el=gi(id); if(!el)return; el.textContent=txt; if(col)el.color=col; }
+  function set(id,txt,col){ var el=gi(id); if(!el)return; el.textContent=txt; if(col)el.style.color=col; }
   function escHtml(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function applyInputStyles(){
-    var s='width:100%;margin-top:4px;padding:7px 8px;background:#0d1b2e;color:#ffffff;'+
-          'border:1px solid #2a4a6b;border-radius:6px;font-size:12px;font-family:inherit;box-sizing:border-box';
+    var s='width:100%;margin-top:4px;padding:7px 8px;background:#ffffff;color:#111113;'+
+          'border:1px solid #E4E4E7;border-radius:0;font-size:12px;font-family:inherit;box-sizing:border-box';
     var els=document.getElementsByClassName('ri');
     for(var i=0;i<els.length;i++) els[i].setAttribute('style',s);
   }
@@ -93,7 +93,7 @@
     var e7=eqAt(7,loan,mr,mpi,price,appr,io);
     function cagr(e,yr){return down>0&&e.eq>0?(Math.pow(e.eq/down,1/yr)-1)*100:0;}
 
-    set('m1v',fms(mcf),mcf>=0?'#2ecc71':'#e74c3c');
+    set('m1v',fms(mcf),mcf>=0?'#1E8449':'#B42318');
     set('m1s',pc(coc)+' CoC');
     set('m2v',fm(e3.eq)); set('m2s',pc(cagr(e3,3))+' CAGR');
     set('m3v',fm(e5.eq)); set('m3s',pc(cagr(e5,5))+' CAGR');
@@ -202,11 +202,11 @@
     var rows='';
     for(var i=0;i<items.length;i++){
       var s=items[i];
-      var mcfCol=s.mcf>=0?'#16a34a':'#dc2626';
+      var mcfCol=s.mcf>=0?'#1E8449':'#B42318';
       var ltLabel=s.loantype==='30io'?'Interest Only':'30yr Fixed';
-      rows+='<div style="background:#fff;border:1px solid #e0ddd8;border-left:4px solid #c5a050;border-radius:0 10px 10px 0;overflow:hidden;margin-bottom:24px;page-break-inside:avoid">'
+      rows+='<div style="background:#fff;border:1px solid #e0ddd8;border-left:4px solid #0E0E10;border-radius:0 10px 10px 0;overflow:hidden;margin-bottom:24px;page-break-inside:avoid">'
         +'<div style="padding:14px 20px;border-bottom:1px solid #e8e5e0;display:flex;justify-content:space-between;align-items:center">'
-        +'<div><div style="font-size:15px;font-weight:700;color:#0d1b2e">'+escHtml(s.label)+'</div>'
+        +'<div><div style="font-size:15px;font-weight:700;color:#111113">'+escHtml(s.label)+'</div>'
         +'<div style="font-size:10px;color:#999;margin-top:2px">'+ltLabel+' &middot; Saved '+escHtml(s.savedAt)+'</div></div>'
         +'<div style="text-align:right"><div style="font-size:26px;font-weight:700;color:'+mcfCol+'">'+fms(s.mcf)+'/mo</div>'
         +'<div style="font-size:10px;color:#888">'+pc(s.coc)+' Cash-on-Cash</div></div>'
@@ -214,38 +214,38 @@
         +'<div style="padding:14px 20px;background:#f9f8f5">'
         +'<table style="width:100%;border-collapse:collapse;font-size:12px">'
         +'<tr style="border-bottom:1px solid #e8e5e0">'
-        +'<td style="padding:6px 8px;color:#888;width:16%">Price</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(s.inp.price)+'</td>'
-        +'<td style="padding:6px 8px;color:#888">Down</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(s.inp.down)+'</td>'
-        +'<td style="padding:6px 8px;color:#888">Rent/mo</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(s.inp.rent)+'</td></tr>'
+        +'<td style="padding:6px 8px;color:#888;width:16%">Price</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(s.inp.price)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Down</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(s.inp.down)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Rent/mo</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(s.inp.rent)+'</td></tr>'
         +'<tr style="border-bottom:1px solid #e8e5e0">'
-        +'<td style="padding:6px 8px;color:#888">Interest</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+s.inp.rate+'%</td>'
-        +'<td style="padding:6px 8px;color:#888">Appr.</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+s.inp.appr+'%</td>'
-        +'<td style="padding:6px 8px;color:#888">Vacancy</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+s.inp.vac+'%</td></tr>'
+        +'<td style="padding:6px 8px;color:#888">Interest</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+s.inp.rate+'%</td>'
+        +'<td style="padding:6px 8px;color:#888">Appr.</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+s.inp.appr+'%</td>'
+        +'<td style="padding:6px 8px;color:#888">Vacancy</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+s.inp.vac+'%</td></tr>'
         +'<tr style="border-bottom:1px solid #e8e5e0">'
-        +'<td style="padding:6px 8px;color:#888">Taxes/yr</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(s.inp.taxes)+'</td>'
-        +'<td style="padding:6px 8px;color:#888">Insur./yr</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(s.inp.ins)+'</td>'
-        +'<td style="padding:6px 8px;color:#888">Maint./yr</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(s.inp.maint)+'</td></tr>'
+        +'<td style="padding:6px 8px;color:#888">Taxes/yr</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(s.inp.taxes)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Insur./yr</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(s.inp.ins)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Maint./yr</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(s.inp.maint)+'</td></tr>'
         +'<tr>'
-        +'<td style="padding:6px 8px;color:#888">HOA/mo</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(s.inp.hoa)+'</td>'
-        +'<td style="padding:6px 8px;color:#888">Mgmt/mo</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(s.inp.mgmt)+'</td>'
-        +'<td style="padding:6px 8px;color:#888">Loan</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+ltLabel+'</td></tr>'
+        +'<td style="padding:6px 8px;color:#888">HOA/mo</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(s.inp.hoa)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Mgmt/mo</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(s.inp.mgmt)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Loan</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+ltLabel+'</td></tr>'
         +'<tr style="background:#f4f2ec">'
-        +'<td style="padding:6px 8px;color:#888">LTV</td><td style="padding:6px 8px;font-weight:700;color:#0d1b2e">'+Math.round((s.inp.price-s.inp.down)/s.inp.price*100)+'%</td>'
-        +'<td style="padding:6px 8px;color:#888">Down</td><td style="padding:6px 8px;font-weight:700;color:#0d1b2e">'+Math.round(s.inp.down/s.inp.price*100)+'%</td>'
+        +'<td style="padding:6px 8px;color:#888">LTV</td><td style="padding:6px 8px;font-weight:700;color:#111113">'+Math.round((s.inp.price-s.inp.down)/s.inp.price*100)+'%</td>'
+        +'<td style="padding:6px 8px;color:#888">Down</td><td style="padding:6px 8px;font-weight:700;color:#111113">'+Math.round(s.inp.down/s.inp.price*100)+'%</td>'
         +'<td></td><td></td></tr>'
         +'</table></div></div>';
     }
     var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>REI Calc - Property Comparison</title>'
-      +'<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#0d1b2e;padding:32px;max-width:860px;margin:0 auto}'
-      +'.page-hdr{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;margin-bottom:28px;border-bottom:3px solid #0d1b2e}'
-      +'.brand{font-size:20px;font-weight:700;color:#0d1b2e}.brand span{color:#c5a050}'
+      +'<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#111113;padding:32px;max-width:860px;margin:0 auto}'
+      +'.page-hdr{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;margin-bottom:28px;border-bottom:3px solid #111113}'
+      +'.brand{font-size:20px;font-weight:700;color:#111113}.brand span{color:#C8A96E}'
       +'.brand-sub{font-size:10px;color:#888;margin-top:3px;letter-spacing:.04em}'
       +'.page-date{font-size:11px;color:#888;text-align:right}'
       +'.page-ftr{margin-top:28px;padding-top:14px;border-top:1px solid #ddd;display:flex;justify-content:space-between}'
       +'.page-ftr span{font-size:9px;color:#aaa}'
       +'@media print{body{padding:16px}@page{margin:14mm}}</style></head><body>'
-      +'<div class="page-hdr"><div><div class="brand">Realty <span>25 AZ</span></div>'
-      +'<div class="brand-sub">ALIK LEVIN, BROKER &middot; 480.920.2273 &middot; REALTY25AZ.COM</div></div>'
+      +'<div class="page-hdr"><div><div class="brand">Realty <span>25</span> AZ</div>'
+      +'<div class="brand-sub">DESIGNATED BROKER: ALIK LEVIN &middot; 480.920.2273 &middot; REALTY25AZ.COM</div></div>'
       +'<div class="page-date"><strong style="font-size:13px">REI Property Comparison</strong><br>'+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})+'</div>'
       +'</div>'+rows
       +'<div class="page-ftr"><span>Realty 25 AZ &middot; realty25az.com &middot; 480.920.2273</span>'
@@ -260,28 +260,28 @@
   }
 
   function saveCard(s,isActive){
-    var mcfCol=s.mcf>=0?'#2ecc71':'#e74c3c';
+    var mcfCol=s.mcf>=0?'#1E8449':'#B42318';
     var ltLabel=s.loantype==='30io'?'IO':'Fixed';
     var rowStyle=isActive
-      ?'border-top:1px solid #1e3a5f;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;background:rgba(197,160,80,0.08);border-left:3px solid #c5a050;padding-left:8px;margin-left:-8px'
-      :'border-top:1px solid #1e3a5f;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px';
+      ?'border-top:1px solid #E4E4E7;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;background:rgba(14,14,16,0.06);border-left:3px solid #0E0E10;padding-left:8px;margin-left:-8px'
+      :'border-top:1px solid #E4E4E7;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px';
     var loadBtn=isActive
-      ?'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#c5a050;color:#0d1b2e;border-radius:4px;font-size:10px;font-weight:700;cursor:pointer">Active</span>'
-      :'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#1e3a5f;color:#c5a050;border-radius:4px;font-size:10px;font-weight:700;cursor:pointer">Load</span>';
+      ?'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Active</span>'
+      :'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#ffffff;color:#0E0E10;border:1px solid #0E0E10;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Load</span>';
     var saveBtn=isActive
-      ?'<span data-id="'+s.id+'" data-act="overwrite" style="padding:4px 9px;background:#1e3a5f;color:#2ecc71;border-radius:4px;font-size:13px;cursor:pointer" title="Update save">&#128190;</span>'
+      ?'<span data-id="'+s.id+'" data-act="overwrite" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:13px;cursor:pointer" title="Update save">&#128190;</span>'
       :'';
     return '<div style="'+rowStyle+'">'
       +'<div style="flex:1;min-width:0">'
-      +'<font color="#ffffff" style="font-size:12px;font-weight:600">'+escHtml(s.label)+'</font>'
-      +'<font color="#7a9bbf" style="font-size:10px"> &middot; '+ltLabel+'</font><br>'
+      +'<font color="#111113" style="font-size:12px;font-weight:600">'+escHtml(s.label)+'</font>'
+      +'<font color="#4D4D55" style="font-size:10px"> &middot; '+ltLabel+'</font><br>'
       +'<font color="'+mcfCol+'" style="font-size:11px;font-weight:700">'+fms(s.mcf)+'/mo</font>'
-      +'<font color="#7a9bbf" style="font-size:10px"> &middot; '+pc(s.coc)+' CoC &middot; '+pc(s.cagr3)+' CAGR@3Y</font>'
+      +'<font color="#4D4D55" style="font-size:10px"> &middot; '+pc(s.coc)+' CoC &middot; '+pc(s.cagr3)+' CAGR@3Y</font>'
       +'</div>'
       +'<span style="display:flex;gap:5px;flex-shrink:0">'
       +loadBtn+saveBtn
-      +'<span data-id="'+s.id+'" data-act="print" style="padding:4px 9px;background:#1e3a5f;color:#c5a050;border-radius:4px;font-size:13px;cursor:pointer">&#128424;</span>'
-      +'<span data-id="'+s.id+'" data-act="del" style="padding:4px 9px;background:#1e3a5f;color:#e74c3c;border-radius:4px;font-size:10px;font-weight:700;cursor:pointer">&#10005;</span>'
+      +'<span data-id="'+s.id+'" data-act="print" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:13px;cursor:pointer">&#128424;</span>'
+      +'<span data-id="'+s.id+'" data-act="del" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">&#10005;</span>'
       +'</span></div>';
   }
 
@@ -290,7 +290,7 @@
     var list=gi('saves-list'); if(!list) return;
     var titleEl=gi('sv-title');
     if(titleEl) titleEl.textContent='SAVED: '+arr.length;
-    if(!arr.length){list.innerHTML='<font color="#7a9bbf" style="font-size:11px">No saved calculations yet.</font>';return;}
+    if(!arr.length){list.innerHTML='<font color="#4D4D55" style="font-size:11px">No saved calculations yet.</font>';return;}
     var html=''; for(var i=0;i<arr.length;i++) html+=saveCard(arr[i],String(arr[i].id)===String(activeId));
     list.innerHTML=html;
   }
@@ -299,15 +299,15 @@
     var panelAnchor=gi('saved-panel-anchor');
     if(panelAnchor){
       panelAnchor.innerHTML=''
-        +'<div style="background:#162236;border-radius:10px;margin-bottom:12px;overflow:hidden">'
+        +'<div style="background:#F5F5F5;border:1px solid #E4E4E7;border-radius:0;margin-bottom:12px;overflow:hidden">'
         +'<div id="hdr-sv" style="padding:14px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between">'
-        +'<font id="sv-title" color="#ffffff" style="font-size:11px;font-weight:700;letter-spacing:.08em">SAVED: 0</font>'
+        +'<font id="sv-title" color="#111113" style="font-size:11px;font-weight:700;letter-spacing:.08em">SAVED: 0</font>'
         +'<span style="display:flex;align-items:center;gap:8px">'
-        +'<span id="print-all-btn" style="font-size:14px;cursor:pointer;padding:3px 8px;background:#1e3a5f;color:#c5a050;border-radius:4px;line-height:1" title="Print all">&#128424;</span>'
-        +'<font id="arr-sv" color="#7a9bbf" style="font-size:13px">&#9658;</font>'
+        +'<span id="print-all-btn" style="font-size:14px;cursor:pointer;padding:3px 8px;background:#0E0E10;color:#ffffff;border-radius:0;line-height:1" title="Print all">&#128424;</span>'
+        +'<font id="arr-sv" color="#4D4D55" style="font-size:13px">&#9658;</font>'
         +'</span></div>'
         +'<div id="body-sv" style="display:none;padding:0 16px 16px">'
-        +'<div id="saves-list"><font color="#7a9bbf" style="font-size:11px">No saved calculations yet.</font></div>'
+        +'<div id="saves-list"><font color="#4D4D55" style="font-size:11px">No saved calculations yet.</font></div>'
         +'</div></div>';
 
       initToggle('hdr-sv','body-sv','arr-sv');
@@ -340,7 +340,7 @@
     var floatAnchor=gi('save-float-anchor');
     if(floatAnchor){
       floatAnchor.innerHTML='<div style="text-align:right;margin-bottom:8px">'
-        +'<span id="btn-save" style="display:inline-block;font-size:18px;cursor:pointer;padding:4px 10px;background:#c5a050;color:#0d1b2e;border-radius:6px;line-height:1" title="Save current calc">&#128190;</span>'
+        +'<span id="btn-save" style="display:inline-block;font-size:18px;cursor:pointer;padding:4px 10px;background:#0E0E10;color:#ffffff;border-radius:0;line-height:1" title="Save current calc">&#128190;</span>'
         +'</div>';
       gi('btn-save').addEventListener('click',doSave);
     }

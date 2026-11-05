@@ -40,7 +40,7 @@ Forms and RentalComp still call `https://rentalcomp-proxy.alik-levin.workers.dev
 
 For preview form tests, Worker `ALLOWED_ORIGIN` must include `https://r25sandbox.github.io`.
 
-## Go-live checklist (only when Alik approves)
+## Go-live checklist (only when the owner approves)
 
 1. Push this folder to `r25sandbox/realty25az-site` and enable GitHub Pages from `main` (root).
 2. Preview on `https://r25sandbox.github.io/realty25az-site/` and smoke-test forms and tools.

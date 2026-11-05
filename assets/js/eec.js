@@ -28,12 +28,12 @@
   function fms(n){ return (n>=0?'+':'-')+fm(n); }
   function pc(n){ return (Math.round(n*10)/10)+'%'; }
   function setTxt(id,val){ var el=gi(id); if(el) el.innerHTML=val; }
-  function setColor(id,col){ var el=gi(id); if(el) el.color=col; }
+  function setColor(id,col){ var el=gi(id); if(el) el.style.color=col; }
   function escHtml(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function applyInputStyles(){
-    var s='width:100%;margin-top:4px;padding:6px 7px;background:#0d1b2e;color:#ffffff;'+
-          'border:1px solid #2a4a6b;border-radius:6px;font-size:12px;font-family:inherit;box-sizing:border-box';
+    var s='width:100%;margin-top:4px;padding:6px 7px;background:#ffffff;color:#111113;'+
+          'border:1px solid #E4E4E7;border-radius:0;font-size:12px;font-family:inherit;box-sizing:border-box';
     var els=document.getElementsByClassName('ei');
     for(var i=0;i<els.length;i++) els[i].setAttribute('style',s);
   }
@@ -133,21 +133,21 @@
     var ltv80=s.propval*0.80;
     setTxt('slider-label',fm(extract));           // header: cash-out amount, no "extracted"
     setTxt('slider-cf',fms(cf));                  // header: cash flow (color set below)
-    setColor('slider-cf',cf>=0?'#2ecc71':'#e74c3c');
+    setColor('slider-cf',cf>=0?'#1E8449':'#B42318');
     setTxt('slider-loan',fm(newLoan));
     setTxt('slider-pmt',fm(newPmt));
     // LTV in stats row
     var ltv=s.propval>0?Math.round(newLoan/s.propval*100):0;
     setTxt('slider-ltv',ltv+'%');
-    setColor('slider-ltv',ltv<=80?'#2ecc71':'#e74c3c');
+    setColor('slider-ltv',ltv<=80?'#1E8449':'#B42318');
     var pct=s.maxCashOut>0?Math.min(extract/s.maxCashOut*100,100):0;
     var barEl=gi('slider-bar');
-    if(barEl){barEl.style.width=pct+'%';barEl.style.background=cf>=0?'#2ecc71':'#e74c3c';}
+    if(barEl){barEl.style.width=pct+'%';barEl.style.background=cf>=0?'#1E8449':'#B42318';}
     var statusEl=gi('slider-status');
     if(statusEl){
-      if(newLoan>ltv80){statusEl.innerHTML='&#9888; Exceeds 80% LTV &#8212; lender approval unlikely';statusEl.color='#e74c3c';}
-      else if(cf>=0){statusEl.innerHTML='&#10003; Cash flow positive at this extraction';statusEl.color='#2ecc71';}
-      else{statusEl.innerHTML='&#10007; Cash flow negative &#8212; reduce extraction';statusEl.color='#e74c3c';}
+      if(newLoan>ltv80){statusEl.innerHTML='&#9888; Exceeds 80% LTV &#8212; lender approval unlikely';statusEl.style.color='#B42318';}
+      else if(cf>=0){statusEl.innerHTML='&#10003; Cash flow positive at this extraction';statusEl.style.color='#1E8449';}
+      else{statusEl.innerHTML='&#10007; Cash flow negative &#8212; reduce extraction';statusEl.style.color='#B42318';}
     }
   }
 
@@ -248,24 +248,24 @@
       var s=subset[i]; var inp=s.inp||{};
       var dispExtract=s.savedExtract!==undefined?s.savedExtract:s.maxCashOut;
       var dispCF=s.savedCF!==undefined?s.savedCF:s.newCF;
-      var cfCol=dispCF>=0?'#16a34a':'#dc2626';
+      var cfCol=dispCF>=0?'#1E8449':'#B42318';
       var ltLabel=inp.loantype==='30io'?'Interest Only':'30yr Fixed';
       var ltvStr=s.savedLTV!==undefined?' &middot; '+s.savedLTV+'% LTV':'';
       // 3-col input grid rows — alternating background matching RIC
       var r0='border-bottom:1px solid #e8e5e0';
       var ra='background:#f8f8f8;'+r0;
       rows+=''
-        +'<div style="border:1px solid #e2e8f0;border-left:4px solid #c5a050;border-radius:6px;padding:20px 20px 16px;margin-bottom:20px;page-break-inside:avoid">'
+        +'<div style="border:1px solid #e2e8f0;border-left:4px solid #0E0E10;border-radius:6px;padding:20px 20px 16px;margin-bottom:20px;page-break-inside:avoid">'
         // Card header: name left, hero metrics right
         +'<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">'
         +'<div>'
-        +'<div style="font-size:17px;font-weight:700;color:#0d1b2e">'+escHtml(s.label)+'</div>'
+        +'<div style="font-size:17px;font-weight:700;color:#111113">'+escHtml(s.label)+'</div>'
         +'<div style="font-size:10px;color:#888;margin-top:3px">'+ltLabel+' &middot; Saved '+escHtml(s.savedAt)+ltvStr+'</div>'
         +'</div>'
         +'<div style="display:flex;gap:24px;flex-shrink:0;align-items:flex-start">'
         +'<div style="text-align:right">'
         +'<div style="font-size:11px;color:#888;margin-bottom:2px">Cash out</div>'
-        +'<div style="font-size:26px;font-weight:700;color:#c5a050">'+fm(dispExtract)+'</div>'
+        +'<div style="font-size:26px;font-weight:700;color:#111113">'+fm(dispExtract)+'</div>'
         +'</div>'
         +'<div style="text-align:right">'
         +'<div style="font-size:11px;color:#888;margin-bottom:2px">Cash flow</div>'
@@ -275,19 +275,19 @@
         // 3-col input grid
         +'<table style="width:100%;border-collapse:collapse;font-size:12px">'
         +'<tr style="'+r0+'">'
-        +'<td style="padding:6px 8px;color:#888;width:17%">Loan balance</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e;width:16%">'+fm(inp.balance)+'</td>'
-        +'<td style="padding:6px 8px;color:#888;width:17%">Property value</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e;width:16%">'+fm(inp.propval)+'</td>'
-        +'<td style="padding:6px 8px;color:#888;width:17%">Refi rate</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+inp.refirate+'%</td>'
+        +'<td style="padding:6px 8px;color:#888;width:17%">Loan balance</td><td style="padding:6px 8px;font-weight:600;color:#111113;width:16%">'+fm(inp.balance)+'</td>'
+        +'<td style="padding:6px 8px;color:#888;width:17%">Property value</td><td style="padding:6px 8px;font-weight:600;color:#111113;width:16%">'+fm(inp.propval)+'</td>'
+        +'<td style="padding:6px 8px;color:#888;width:17%">Refi rate</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+inp.refirate+'%</td>'
         +'</tr>'
         +'<tr style="'+ra+'">'
-        +'<td style="padding:6px 8px;color:#888">Gross rent</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(inp.rent)+'/mo</td>'
-        +'<td style="padding:6px 8px;color:#888">Taxes/yr</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(inp.taxes)+'</td>'
-        +'<td style="padding:6px 8px;color:#888">Insur./yr</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(inp.ins)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Gross rent</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(inp.rent)+'/mo</td>'
+        +'<td style="padding:6px 8px;color:#888">Taxes/yr</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(inp.taxes)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Insur./yr</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(inp.ins)+'</td>'
         +'</tr>'
         +'<tr style="'+r0+'">'
-        +'<td style="padding:6px 8px;color:#888">HOA/mo</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(inp.hoa)+'</td>'
-        +'<td style="padding:6px 8px;color:#888">Mgmt/mo</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(inp.mgmt)+'</td>'
-        +'<td style="padding:6px 8px;color:#888">Maint./yr</td><td style="padding:6px 8px;font-weight:600;color:#0d1b2e">'+fm(inp.maint)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">HOA/mo</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(inp.hoa)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Mgmt/mo</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(inp.mgmt)+'</td>'
+        +'<td style="padding:6px 8px;color:#888">Maint./yr</td><td style="padding:6px 8px;font-weight:600;color:#111113">'+fm(inp.maint)+'</td>'
         +'</tr>'
         +'</table>'
         +'</div>';
@@ -297,20 +297,20 @@
       +'<title>Cash Out &#8212; Scenario Comparison</title>'
       +'<style>'
       +'*{box-sizing:border-box;margin:0;padding:0}'
-      +'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#0d1b2e;padding:32px;max-width:860px;margin:0 auto}'
-      +'.page-hdr{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;margin-bottom:28px;border-bottom:3px solid #0d1b2e}'
-      +'.brand{font-size:20px;font-weight:700;color:#0d1b2e;letter-spacing:-.01em}'
-      +'.brand span{color:#c5a050}'
+      +'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#111113;padding:32px;max-width:860px;margin:0 auto}'
+      +'.page-hdr{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;margin-bottom:28px;border-bottom:3px solid #111113}'
+      +'.brand{font-size:20px;font-weight:700;color:#111113;letter-spacing:-.01em}'
+      +'.brand span{color:#C8A96E}'
       +'.brand-sub{font-size:10px;color:#888;margin-top:3px;letter-spacing:.04em}'
-      +'.page-title{font-size:13px;font-weight:700;color:#0d1b2e;text-align:right}'
+      +'.page-title{font-size:13px;font-weight:700;color:#111113;text-align:right}'
       +'.page-date{font-size:11px;color:#888;text-align:right;margin-top:3px}'
       +'.page-ftr{margin-top:28px;padding-top:12px;border-top:1px solid #ddd;display:flex;justify-content:space-between;align-items:center}'
       +'.page-ftr span{font-size:9px;color:#aaa}'
       +'@media print{body{padding:16px}@page{margin:14mm}}'
       +'</style></head><body>'
       +'<div class="page-hdr">'
-      +'<div><div class="brand">Realty <span>25 AZ</span></div>'
-      +'<div class="brand-sub">ALIK LEVIN, BROKER &middot; 480.920.2273 &middot; REALTY25AZ.COM</div></div>'
+      +'<div><div class="brand">Realty <span>25</span> AZ</div>'
+      +'<div class="brand-sub">DESIGNATED BROKER: ALIK LEVIN &middot; 480.920.2273 &middot; REALTY25AZ.COM</div></div>'
       +'<div><div class="page-title">Cash Out &#8212; Scenario Comparison</div>'
       +'<div class="page-date">'+dateStr+'</div></div>'
       +'</div>'
@@ -337,29 +337,29 @@
     // Display what was saved at the slider position, fall back to maxCashOut for old saves
     var dispExtract = s.savedExtract!==undefined ? s.savedExtract : s.maxCashOut;
     var dispCF      = s.savedCF!==undefined      ? s.savedCF      : s.newCF;
-    var cfCol=dispCF>=0?'#2ecc71':'#e74c3c';
+    var cfCol=dispCF>=0?'#1E8449':'#B42318';
     var ltLabel=s.loantype==='30io'?'IO':'Fixed';
     var rowStyle=isActive
-      ?'border-top:1px solid #1e3a5f;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;background:rgba(197,160,80,0.08);border-left:3px solid #c5a050;padding-left:8px;margin-left:-8px'
-      :'border-top:1px solid #1e3a5f;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px';
+      ?'border-top:1px solid #E4E4E7;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;background:rgba(14,14,16,0.06);border-left:3px solid #0E0E10;padding-left:8px;margin-left:-8px'
+      :'border-top:1px solid #E4E4E7;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px';
     var loadBtn=isActive
-      ?'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#c5a050;color:#0d1b2e;border-radius:4px;font-size:10px;font-weight:700;cursor:pointer">Active</span>'
-      :'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#1e3a5f;color:#c5a050;border-radius:4px;font-size:10px;font-weight:700;cursor:pointer">Load</span>';
+      ?'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Active</span>'
+      :'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#ffffff;color:#0E0E10;border:1px solid #0E0E10;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Load</span>';
     var saveBtn=isActive
-      ?'<span data-id="'+s.id+'" data-act="overwrite" style="padding:4px 9px;background:#1e3a5f;color:#2ecc71;border-radius:4px;font-size:13px;cursor:pointer" title="Update save">&#128190;</span>'
+      ?'<span data-id="'+s.id+'" data-act="overwrite" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:13px;cursor:pointer" title="Update save">&#128190;</span>'
       :'';
     return '<div style="'+rowStyle+'">'
       +'<div style="flex:1;min-width:0">'
-      +'<font color="#ffffff" style="font-size:12px;font-weight:600">'+escHtml(s.label)+'</font>'
-      +'<font color="#7a9bbf" style="font-size:10px"> &#183; '+ltLabel+'</font><br>'
+      +'<font color="#111113" style="font-size:12px;font-weight:600">'+escHtml(s.label)+'</font>'
+      +'<font color="#4D4D55" style="font-size:10px"> &#183; '+ltLabel+'</font><br>'
       +'<font color="'+cfCol+'" style="font-size:11px;font-weight:700">'+fms(dispCF)+'/mo</font>'
-      +'<font color="#7a9bbf" style="font-size:10px"> &#183; '+fm(dispExtract)+' out'
+      +'<font color="#4D4D55" style="font-size:10px"> &#183; '+fm(dispExtract)+' out'
       +(s.savedLTV!==undefined?' &#183; '+s.savedLTV+'% LTV':'')+'</font>'
       +'</div>'
       +'<span style="display:flex;gap:5px;flex-shrink:0">'
       +loadBtn+saveBtn
-      +'<span data-id="'+s.id+'" data-act="print" style="padding:4px 9px;background:#1e3a5f;color:#c5a050;border-radius:4px;font-size:13px;cursor:pointer" title="Print">&#128424;</span>'
-      +'<span data-id="'+s.id+'" data-act="del" style="padding:4px 9px;background:#1e3a5f;color:#e74c3c;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer" title="Delete">&#10005;</span>'
+      +'<span data-id="'+s.id+'" data-act="print" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:13px;cursor:pointer" title="Print">&#128424;</span>'
+      +'<span data-id="'+s.id+'" data-act="del" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:11px;font-weight:700;cursor:pointer" title="Delete">&#10005;</span>'
       +'</span>'
       +'</div>';
   }
@@ -370,7 +370,7 @@
     if(!list) return;
     var countEl=gi('eec-saves-count');
     if(countEl) countEl.innerHTML='SAVED: '+arr.length;
-    if(!arr.length){list.innerHTML='<font color="#7a9bbf" style="font-size:11px">No saved scenarios yet.</font>';return;}
+    if(!arr.length){list.innerHTML='<font color="#4D4D55" style="font-size:11px">No saved scenarios yet.</font>';return;}
     var html=''; for(var i=0;i<arr.length;i++) html+=saveCard(arr[i],String(arr[i].id)===String(activeId));
     list.innerHTML=html;
   }
@@ -380,15 +380,15 @@
     var panelAnchor=gi('eec-saves-panel-anchor');
     if(panelAnchor){
       panelAnchor.innerHTML=''
-        +'<div style="background:#162236;border-radius:10px;margin-bottom:12px;overflow:hidden">'
+        +'<div style="background:#F5F5F5;border:1px solid #E4E4E7;border-radius:0;margin-bottom:12px;overflow:hidden">'
         +'<div id="hdr-sv" style="padding:14px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between">'
-        +'<font id="eec-saves-count" color="#ffffff" style="font-size:11px;font-weight:700;letter-spacing:.08em">SAVED: 0</font>'
+        +'<font id="eec-saves-count" color="#111113" style="font-size:11px;font-weight:700;letter-spacing:.08em">SAVED: 0</font>'
         +'<span style="display:flex;align-items:center;gap:8px">'
-        +'<span id="eec-print-all" style="font-size:14px;cursor:pointer;padding:3px 7px;background:#1e3a5f;color:#c5a050;border-radius:4px" title="Print all">&#128424;</span>'
-        +'<font id="arr-sv" color="#7a9bbf" style="font-size:13px">&#9658;</font>'
+        +'<span id="eec-print-all" style="font-size:14px;cursor:pointer;padding:3px 7px;background:#0E0E10;color:#ffffff;border-radius:0" title="Print all">&#128424;</span>'
+        +'<font id="arr-sv" color="#4D4D55" style="font-size:13px">&#9658;</font>'
         +'</span></div>'
         +'<div id="body-sv" style="display:none;padding:0 16px 16px">'
-        +'<div id="eec-saves-list"><font color="#7a9bbf" style="font-size:11px">No saved scenarios yet.</font></div>'
+        +'<div id="eec-saves-list"><font color="#4D4D55" style="font-size:11px">No saved scenarios yet.</font></div>'
         +'</div></div>';
 
       initToggle('hdr-sv','body-sv','arr-sv');
@@ -422,7 +422,7 @@
 
     var saveAnchor=gi('eec-save-btn-anchor');
     if(saveAnchor){
-      saveAnchor.innerHTML='<span id="eec-btn-save" style="display:inline-block;font-size:18px;cursor:pointer;padding:3px 9px;background:#c5a050;color:#0d1b2e;border-radius:6px;line-height:1.3" title="Save scenario">&#128190;</span>';
+      saveAnchor.innerHTML='<span id="eec-btn-save" style="display:inline-block;font-size:18px;cursor:pointer;padding:3px 9px;background:#0E0E10;color:#ffffff;border-radius:0;line-height:1.3" title="Save scenario">&#128190;</span>';
       gi('eec-btn-save').addEventListener('click',doSave);
     }
   }

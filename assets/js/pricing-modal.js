@@ -81,7 +81,7 @@ v1.0  2026-05-23  Initial extraction. Logic identical to v1.9
   var currentType="";
 
   function showMsg(text,color){
-    msg.style.color=color||"#E8C96A";
+    msg.style.color=color||"#111113";
     msg.textContent=text;
   }
   function clrMsg(){msg.textContent="";}
@@ -116,9 +116,9 @@ v1.0  2026-05-23  Initial extraction. Logic identical to v1.9
     var l=last.value.trim();
     var e=email.value.trim();
     var p=phone.value.trim();
-    if(!f){showMsg("Please enter your first name.","#f87171");return;}
-    if(!l){showMsg("Please enter your last name.","#f87171");return;}
-    if(!e||!validEmail(e)){showMsg("Please enter a valid email.","#f87171");return;}
+    if(!f){showMsg("Please enter your first name.","#B42318");return;}
+    if(!l){showMsg("Please enter your last name.","#B42318");return;}
+    if(!e||!validEmail(e)){showMsg("Please enter a valid email.","#B42318");return;}
 
     submitBtn.disabled=true;
     submitBtn.textContent="Sending...";
@@ -142,25 +142,25 @@ v1.0  2026-05-23  Initial extraction. Logic identical to v1.9
       if(r.status===200&&r.data&&r.data.ok===true){
         // Terminal success - per Worker contract, do not retry
         submitBtn.textContent="Sent";
-        showMsg("Thanks - request received. I will be in touch shortly.","#86efac");
+        showMsg("Thanks - request received. Our team will be in touch shortly.","#1E8449");
         return;
       }
       if(r.status===400&&r.data&&r.data.error){
         // Validation failure from server - show its message inline
         submitBtn.disabled=false;
         submitBtn.textContent="Submit Request";
-        showMsg(r.data.error,"#f87171");
+        showMsg(r.data.error,"#B42318");
         return;
       }
       // 405/500/anything else
       submitBtn.disabled=false;
       submitBtn.textContent="Submit Request";
-      showMsg("Something went wrong. Please try again.","#f87171");
+      showMsg("Something went wrong. Please try again.","#B42318");
     }).catch(function(){
       // Network failure
       submitBtn.disabled=false;
       submitBtn.textContent="Submit Request";
-      showMsg("Network error. Please try again.","#f87171");
+      showMsg("Network error. Please try again.","#B42318");
     });
   }
 
