@@ -54,4 +54,4 @@ For preview form tests, Worker `ALLOWED_ORIGIN` must include `https://r25sandbox
 
 ## Design
 
-Near-black `#0E0E10` header/footer, white main, black square buttons, Montserrat 700 wordmark with gold `25` (`#C8A96E`), Fraunces headings, Inter body. No photos. Gold only in the wordmark.
+Near-black `#0E0E10` header/footer, white main, black square buttons, Montserrat 700 wordmark with gold `25` (`#C8A96E`), Inter headings and body. No photos. Gold only in the wordmark. See `docs/STYLE.md`.
