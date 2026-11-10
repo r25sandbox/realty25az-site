@@ -79,6 +79,7 @@ v1.0  2026-05-23  Initial extraction. Logic identical to v1.9
   var email=gi("r25ir-email");
   var phone=gi("r25ir-phone");
   var currentType="";
+  var lastFocus=null;
 
   function showMsg(text,color){
     msg.style.color=color||"#111113";
@@ -96,6 +97,7 @@ v1.0  2026-05-23  Initial extraction. Logic identical to v1.9
 
   function openModal(type){
     currentType=type;
+    lastFocus=document.activeElement;
     titleEl.textContent="Request Service";
     resetForm();
     overlay.classList.add("r25ir-open");
@@ -104,8 +106,10 @@ v1.0  2026-05-23  Initial extraction. Logic identical to v1.9
   }
 
   function closeModal(){
+    if(!overlay.classList.contains("r25ir-open")) return;
     overlay.classList.remove("r25ir-open");
     document.body.style.overflow="";
+    if(lastFocus&&typeof lastFocus.focus==="function") lastFocus.focus();
   }
 
   function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);}

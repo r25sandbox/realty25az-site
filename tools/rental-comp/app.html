@@ -37,7 +37,7 @@ header { background: #0E0E10; border-bottom: 1px solid rgba(255,255,255,.15); pa
   z-index: 1000; border-radius: var(--radius);
   box-shadow: 0 4px 28px rgba(0,0,0,0.25);
   overflow: hidden; display: flex; flex-direction: column;
-  max-height: 52px; /* collapsed by default — no flash */
+  max-height: 52px; /* collapsed by default - no flash */
 }
 .panel.open { max-height: calc(100% - 80px); transition: max-height 0.3s ease; }
 .panel.collapsed { max-height: 52px; transition: max-height 0.3s ease; }
@@ -109,7 +109,7 @@ header :focus-visible{outline-color:#fff}
 .comp-item.comp-excluded { border-left: 3px solid #ddd; opacity: 0.6; }
 .comp-item.comp-excluded:hover { border-color: #bbb; background: #fafafa; }
 
-/* Stats + legend bar — pinned to bottom, two rows */
+/* Stats + legend bar - pinned to bottom, two rows */
 .stats-strip {
   position: absolute; bottom: 0; left: 0; right: 0; z-index: 1000;
   background: var(--surface); border-top: 1px solid var(--border);
@@ -130,11 +130,11 @@ header :focus-visible{outline-color:#fff}
 .ss-val { font-size: 13px; font-weight: 600; font-family: var(--mono); color: var(--text); }
 .ss-div { width: 1px; height: 28px; background: var(--border2); }
 
-/* Legend — now lives in the bar, no longer floating */
+/* Legend - now lives in the bar, no longer floating */
 .legend-float { display: none; }
 .ldot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 4px; vertical-align: middle; }
 
-/* Status — inside stats strip, no separate pill needed */
+/* Status - inside stats strip, no separate pill needed */
 .status-pill { display: none; }
 .sdot { width: 6px; height: 6px; border-radius: 50%; background: var(--text3); flex-shrink: 0; }
 .sdot.loading { background: #f0a500; animation: pulse 1s infinite; }
@@ -244,7 +244,7 @@ header .what-trigger:hover { color: #C3CAD4; }
 </head>
 <body>
 
-<!-- Access gate — hidden once key is valid -->
+<!-- Access gate - hidden once key is valid -->
 <div class="gate" id="gate">
   <div class="gate-card">
     <div style="text-align:center;margin-bottom:14px;"><a class="what-trigger" href="#" onclick="event.preventDefault();showExplainer();" style="font-size:13px;"><span class="info-icon">i</span>What is RentalComp?</a></div>
@@ -289,10 +289,10 @@ header .what-trigger:hover { color: #C3CAD4; }
     </div>
     <div class="panel-body">
       <div class="subject-card" id="subject-card">
-        <div class="s-addr" id="sc-addr">—</div>
-        <div class="s-meta" id="sc-meta">—</div>
-        <div class="s-rent" id="sc-rent">—</div>
-        <div class="s-range" id="sc-range">—</div>
+        <div class="s-addr" id="sc-addr">-</div>
+        <div class="s-meta" id="sc-meta">-</div>
+        <div class="s-rent" id="sc-rent">-</div>
+        <div class="s-range" id="sc-range">-</div>
       <div id="sc-badges" style="margin-top:5px;"></div>
       </div>
       <div id="price-bar-wrap" style="display:none;background:#f9f8f5;border-radius:8px;padding:10px 12px;margin-bottom:10px;"></div>
@@ -307,13 +307,13 @@ header .what-trigger:hover { color: #C3CAD4; }
   
   <div class="stats-strip" id="stats-strip">
     <div class="stats-row">
-      <div class="ss-item"><div class="ss-lbl">In view</div><div class="ss-val" id="s-count">—</div></div>
+      <div class="ss-item"><div class="ss-lbl">In view</div><div class="ss-val" id="s-count">-</div></div>
       <div class="ss-div"></div>
-      <div class="ss-item"><div class="ss-lbl">Median</div><div class="ss-val" id="s-median">—</div></div>
+      <div class="ss-item"><div class="ss-lbl">Median</div><div class="ss-val" id="s-median">-</div></div>
       <div class="ss-div"></div>
-      <div class="ss-item"><div class="ss-lbl">Range</div><div class="ss-val" id="s-range-stat" style="font-size:11px;">—</div></div>
+      <div class="ss-item"><div class="ss-lbl">Range</div><div class="ss-val" id="s-range-stat" style="font-size:11px;">-</div></div>
       <div class="ss-div"></div>
-      <div class="ss-item"><div class="ss-lbl">Avg $/sqft</div><div class="ss-val" id="s-sqft">—</div></div>
+      <div class="ss-item"><div class="ss-lbl">Avg $/sqft</div><div class="ss-val" id="s-sqft">-</div></div>
     </div>
     <div class="legend-row">
       <span><span class="ldot" style="background:#c8522a;"></span>Subject</span>
@@ -337,7 +337,7 @@ header .what-trigger:hover { color: #C3CAD4; }
   <span id="status-msg" style="display:none;"></span>
 
 <script>
-/* RentalComp Intelligence — Changelog
+/* RentalComp Intelligence - Changelog
    v5.26 2026-04-26  Three RentalComp mods bundled:
                      1. COMP ESTIMATE BUG FIX: previous formula
                         `compEstimate = avgPpsf × subjectSqft` produced answers
@@ -370,7 +370,7 @@ header .what-trigger:hover { color: #C3CAD4; }
                         title). Reported as buried-key-entry by user via real
                         iPhone screenshot.
                      // Commit: comp estimate avg-of-included + access-key copy + gate tabs
-   v5.25 2026-04-26  PDF report — match the gold-standard target screenshot
+   v5.25 2026-04-26  PDF report - match the gold-standard target screenshot
                      from previous-chat history (April 22, 2026). Five
                      structural changes:
                      1. LETTERHEAD: brand line is now "Realty 25 AZ ·
@@ -389,7 +389,7 @@ header .what-trigger:hover { color: #C3CAD4; }
                      5. STATS GRID: restructured from 3-tile single row to
                         6-tile 2-row grid. Row 1: Rent low / Rent median /
                         Rent high. Row 2: Comps included / Comps excluded /
-                        Avg $/sqft. More informative breakdown — exposes
+                        Avg $/sqft. More informative breakdown - exposes
                         excluded-count which was previously hidden, and
                         breaks the slider's range into discrete data points.
                         Visual style: shared 1px outer border, internal
@@ -399,12 +399,12 @@ header .what-trigger:hover { color: #C3CAD4; }
                      tile because $min–$max is already shown by the slider's
                      endpoint labels directly above it (visual + numeric
                      redundancy). Remaining 3 tiles: In view / Median rent /
-                     Avg $/sqft — each independent data point not visible
+                     Avg $/sqft - each independent data point not visible
                      elsewhere on the page. Bottom grid now mirrors the
                      3-col estimate-tiles row above the slider for visual
                      symmetry (3 above + slider + 3 below).
                      // Commit: PDF stats grid 4col→3col, drop redundant Range tile
-   v5.23 2026-04-26  PDF report regression fix — restore canonical template that
+   v5.23 2026-04-26  PDF report regression fix - restore canonical template that
                      was working correctly at v5.12-v5.15. Somewhere between
                      then and v5.16 the PDF reverted to an older non-canonical
                      design (full-navy header bar, full-navy footer bar, top
@@ -420,7 +420,7 @@ header .what-trigger:hover { color: #C3CAD4; }
                         were redundant with the slider's own min/max) to
                         BELOW the slider as the proper canonical "summary
                         grid" position. 4-col: In view / Median / Range / $/sqft.
-                     4. ESTIMATE TILES kept above slider unchanged — Asking
+                     4. ESTIMATE TILES kept above slider unchanged - Asking
                         red, Comp est blue, Rentcast grey. RentalComp-specific
                         deviation from calc-canonical (which uses gold/green/red);
                         confirmed working at v5.12 and not changed here.
@@ -429,10 +429,10 @@ header .what-trigger:hover { color: #C3CAD4; }
                         AZ") in navy not rgba-on-dark.
                      6. AUTO-PRINT REMOVED: newWin.print() was firing on load
                         per canonical "no auto-print" rule. User taps print
-                        themselves — every modern viewer (Chrome/Safari/iOS)
+                        themselves - every modern viewer (Chrome/Safari/iOS)
                         exposes share/print natively from the new tab.
                      // Commit: PDF report restore canonical template - light header/footer, gold border, tiles below slider, no auto-print
-   v5.22 2026-04-26  Pre-prod-promo polish — 4 mods bundled:
+   v5.22 2026-04-26  Pre-prod-promo polish - 4 mods bundled:
                      1. GATE TOGGLE FIX: clicking "Enter it here" left no path
                         back to the Request Access form. Extracted the request
                         form HTML into showRequestForm() and added a "Need a key?
@@ -442,7 +442,7 @@ header .what-trigger:hover { color: #C3CAD4; }
                         Also added event.preventDefault() on the original Enter-
                         it-here link (no more #-appending to the URL).
                      2. EXPLAINER TAGLINE: was gold-on-white at 11px tracking-
-                        spread — too faint to register. Switched text to navy
+                        spread - too faint to register. Switched text to navy
                         for solid contrast + applied the same gold-marker
                         background-gradient sweep used on "every listing" and
                         "don't be average". Tagline now visually ties to the
@@ -452,17 +452,17 @@ header .what-trigger:hover { color: #C3CAD4; }
                         callout with the canonical disclaimer wording, with
                         Rentcast/Zillow note appended (still useful in print
                         where users can't click through). Same wording as the
-                        explainer modal footer (v5.19) — single source of truth.
+                        explainer modal footer (v5.19) - single source of truth.
                      4. SAMPLE OUTPUT SECTION RESTORED: replaced the deleted SVG
                         mockup (v5.18) with a real cropped screenshot of the
                         tool output (subject card + comp comparison + map +
-                        stats bar). Embedded as base64 JPEG (~75KB) — no
+                        stats bar). Embedded as base64 JPEG (~75KB) - no
                         external image hosting dependency. Rounded corners +
                         soft shadow gives it a "screenshot pinned to a board"
                         look. v5.10 watermark intentionally preserved (stamps
                         as authentic, not curated).
                      // Commit: gate-toggle fix, tagline restyle, PDF disclaimer, real screenshot
-   v5.21 2026-04-26  SECURITY HARDENING — dead-code removal:
+   v5.21 2026-04-26  SECURITY HARDENING - dead-code removal:
                      1. URL-param key handling removed from initAccess().
                         Visiting r25sandbox.carrd.co/?key=R25-XXXX no longer
                         auto-authenticates. Rationale: keys in URLs leak via
@@ -479,10 +479,10 @@ header .what-trigger:hover { color: #C3CAD4; }
                      3. showExpired() function removed (only caller was the
                         deleted reason==='expired' branch).
                      Worker still returns reason + magicLink fields in
-                     responses — harmless, will clean in a future Worker pass.
+                     responses - harmless, will clean in a future Worker pass.
                      Pairs with admin v3.1 (dead magicLink variable removed).
                      // Commit: SECURITY: remove URL-key auth + dead expired flow + leaky reason branching
-   v5.20 2026-04-26  iPhone Safari fold fix — buttons were still hidden under
+   v5.20 2026-04-26  iPhone Safari fold fix - buttons were still hidden under
                      Safari's floating bottom toolbar (which env(safe-area-inset)
                      does NOT cover, only the home indicator). Two fixes:
                      1. GEOMETRY: explainer-card max-height changed from
@@ -495,13 +495,13 @@ header .what-trigger:hover { color: #C3CAD4; }
                         faceless service.
                      Hairline divider between buttons and disclaimer added via
                      border-top on .exp-disclaimer (was implicit before).
-                     Disclaimer kept quiet (10.5px italic gray) — louder = looks
+                     Disclaimer kept quiet (10.5px italic gray) - louder = looks
                      like a warning, undermines trust. Rates intentionally NOT
                      added: explainer is learning mode, limit-reached modal is
                      pricing mode.
                      // Commit: dvh + contact line fixes iPhone Safari toolbar fold
    v5.19 2026-04-26  Explainer modal: disclaimer footer added inside sticky CTA
-                     container — "RentalComp provides data and analysis tools;
+                     container - "RentalComp provides data and analysis tools;
                      final investment decisions remain with the user." Fills the
                      dead space below buttons that was visible on iPhone (where
                      env(safe-area-inset-bottom) reserved space but had no content),
@@ -512,12 +512,12 @@ header .what-trigger:hover { color: #C3CAD4; }
                      // Commit: explainer disclaimer footer fixes mobile fold + meets compliance
    v5.18 2026-04-26  Explainer modal mods (5 user-feedback items):
                      1. CTA sticky to bottom on mobile (position:sticky + safe-area-inset)
-                        — fixes CTA hiding below fold on phones
+                        - fixes CTA hiding below fold on phones
                      2. Hero: dropped navy background → white surface; eyes no longer
                         skip the hero blending into hosted page
                      3. Tagline rewritten: "For investors who underwrite" →
                         "Underwrite rentals smarter"; redundant "Underwrite rentals
-                        smarter — " removed from pitch lead-in (now reads cleanly:
+                        smarter - " removed from pitch lead-in (now reads cleanly:
                         "RentalComp finds the comps. Your judgment makes them hold up")
                      4. Gold-marker handwritten styling extended to "don't be average"
                         (matches "every listing" treatment); highlight alpha bumped
@@ -546,7 +546,7 @@ header .what-trigger:hover { color: #C3CAD4; }
    v5.12 2026-04-21  PDF: remove top 4 tiles (redundant with stats grid), restore asking=red comp=blue
                      light footer with top rule
    v5.11 2026-04-21  Canonical report template applied to PDF (letterhead, cards, hero, stats grid)
-   v5.10 2026-04-11  Drop pool indicator (not reliably in Rentcast features object — confirmed via DevTools)
+   v5.10 2026-04-11  Drop pool indicator (not reliably in Rentcast features object - confirmed via DevTools)
                      HOA: show 'not in Rentcast data' when absent so absence is explicit not silent
                      HOA extraction simplified: hoa.fee with hoaFee fallback, no pool logic
                      // Commit: drop pool badge, explicit HOA absence label
@@ -556,7 +556,7 @@ header .what-trigger:hover { color: #C3CAD4; }
                      // Commit: PDF branding overhaul + hardened HOA/pool extraction
    v5.8  2026-04-11  HOA fee + pool indicator on subject popup, subject card, and PDF report
                      PDF table: all addresses linked to Zillow (subject + comps + excluded)
-                     HOA/pool from /properties endpoint (subject only — comps don't support it)
+                     HOA/pool from /properties endpoint (subject only - comps don't support it)
                      // Commit: add HOA fee and pool badge to subject; Zillow links in PDF
    v5.7  2026-04-10  User feedback round 2:
                      - Limit reached: generic message, pricing tiers shown, no mailto
@@ -566,7 +566,7 @@ header .what-trigger:hover { color: #C3CAD4; }
                      - _key passed on AVM call, Worker 429 handled with showLimitReached
                      - Get Access button → realty25az.com (homepage)
                      // Commit: user feedback round 2 - limit msg, PDF excluded, clear btn
-   v5.4  2026-04-09  Skip logging default demo address — doesn't count against user's limit
+   v5.4  2026-04-09  Skip logging default demo address - doesn't count against user's limit
                      // Commit: don't count default address against trial/tier limit
    v5.3  2026-04-08  Gate footer: "Have an access key? Enter it here"
                      // Commit: update gate copy - key entry not magic link
@@ -644,7 +644,7 @@ header .what-trigger:hover { color: #C3CAD4; }
    v1.2  2026-04-05  Navy/gold branding
    v1.1  2026-04-05  Worker URL hardcoded, auto-search on load
    v1.0  2026-04-05  Cloudflare Worker proxy
-   v0.1–v0.9  Prototype iterations — mock data, branding, viewport filter, history
+   v0.1–v0.9  Prototype iterations - mock data, branding, viewport filter, history
 */
 
 // ── Access control ──
@@ -653,7 +653,7 @@ let accessKey = null;
 
 async function initAccess() {
   // NOTE: URL-param key handling (?key=R25-XXXX) was removed in v5.21 for security.
-  // Keys must NOT travel in URLs — they end up in browser history, server logs,
+  // Keys must NOT travel in URLs - they end up in browser history, server logs,
   // referrer headers, and proxy logs. Manual-paste flow (submitManualKey) is the
   // only sanctioned key entry path. localStorage caches a previously-validated key
   // so returning visitors don't need to re-paste, but the key never enters via URL.
@@ -704,9 +704,9 @@ async function requestAccess() {
       document.getElementById('gate-email').disabled = true;
       document.querySelector('.gate-btn').disabled = true;
     } else if (data.status === 'already_approved') {
-      msg.style.color='#92400E'; msg.textContent='Your email is approved — check your inbox for your access key.';
+      msg.style.color='#92400E'; msg.textContent='Your email is approved. Check your inbox for your access key.';
     } else if (data.status === 'already_requested') {
-      msg.style.color='#92400E'; msg.textContent='Already requested — we\'ll reach out soon.';
+      msg.style.color='#92400E'; msg.textContent='Already requested. We\'ll reach out soon.';
     }
   } catch(e) {
     msg.style.color='#B42318'; msg.textContent='Error sending request. Try again.';
@@ -714,7 +714,7 @@ async function requestAccess() {
 }
 
 function setGateTab(active) {
-  // active: 'request' or 'key' — toggles .active class on the tab buttons
+  // active: 'request' or 'key' - toggles .active class on the tab buttons
   var tReq = document.getElementById('tab-request');
   var tKey = document.getElementById('tab-key');
   if (!tReq || !tKey) return;
@@ -836,7 +836,7 @@ function showLimitReached(limit, used) {
   // 3 = Trial, 10 = Consult, 50 = Investor; anything else = Custom
   var current = limit === 3 ? 'trial' : limit === 10 ? 'consult' : limit === 50 ? 'investor' : 'custom';
 
-  // Card builder — three states: 'current' (greyed), 'recommended' (gold border), 'option' (default)
+  // Card builder - three states: 'current' (greyed), 'recommended' (gold border), 'option' (default)
   function tierCard(state, label, price, line) {
     var border = state === 'current' ? '#E4E4E7'
                : state === 'recommended' ? '#0E0E10'
@@ -912,12 +912,12 @@ async function doSearch() {
       const searchCache=getSearchCache();
 
       if(searchCache[cacheKey] && searchCache[cacheKey].subject && searchCache[cacheKey].subject.lat) {
-        // Cache hit — no API calls
+        // Cache hit - no API calls
         subject=searchCache[cacheKey].subject;
         comps=searchCache[cacheKey].comps;
         setStatus('ok','Cached · '+comps.length+' comps');
       } else {
-        // Cache miss — fetch live. _key passed so Worker enforces limit before proxying.
+        // Cache miss - fetch live. _key passed so Worker enforces limit before proxying.
         setStatus('loading','Calling Rentcast…');
         const params=new URLSearchParams({address:addr,propertyType:'Single Family',compCount:20});
         if(accessKey) params.set('_key', accessKey);
@@ -933,7 +933,7 @@ async function doSearch() {
         if(pRes.status==='fulfilled'&&pRes.value.ok){
           const d=await pRes.value.json();
           const r=Array.isArray(d)?d[0]:d;
-          // Pool is not reliably present in Rentcast's features object — omitted
+          // Pool is not reliably present in Rentcast's features object - omitted
           // HOA fee: try hoa.fee first, then top-level hoaFee
           const hoaFee = r?.hoa?.fee ?? r?.hoaFee ?? null;
           propDetails={bedrooms:r?.bedrooms,bathrooms:r?.bathrooms,squareFootage:r?.squareFootage,propertyType:r?.propertyType,propertyId:r?.id,canonicalAddress:r?.formattedAddress,hoa:hoaFee?Number(hoaFee):null};
@@ -945,7 +945,7 @@ async function doSearch() {
         searchCache[cacheKey]={subject,comps};
         setSearchCache(searchCache);
         setStatus('ok','Live · '+comps.length+' comps');
-        // Log search — skip default demo address, don't count against user's limit
+        // Log search - skip default demo address, don't count against user's limit
         const logAddress = propDetails.canonicalAddress || subject.address;
         const logId = propDetails.propertyId || null;
         const isDefaultAddr = addr.trim().toLowerCase() === DEFAULT_ADDRESS.toLowerCase();
@@ -984,7 +984,7 @@ function placeSubject(s) {
   const sourceStr = s.priceSource==='zillow' ? '<span style="color:#0E0E10;font-weight:600;">Zillow live</span>' : 'Rentcast';
   const askingBlock = s.askingPrice
     ? '<div style="font-size:10px;color:#9ca3af;">Source: '+sourceStr+' · Rentcast est: $'+s.rent.toLocaleString()+'</div>'
-      +'<div style="font-size:10px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:4px 8px;margin-top:6px;line-height:1.5;">⚠ Verify on <a href="'+zillowUrl(s.address)+'" target="_blank" style="color:#92400e;font-weight:600;text-decoration:underline;">Zillow</a> — may have changed.</div>'
+      +'<div style="font-size:10px;color:#b45309;background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:4px 8px;margin-top:6px;line-height:1.5;">⚠ Verify on <a href="'+zillowUrl(s.address)+'" target="_blank" style="color:#92400e;font-weight:600;text-decoration:underline;">Zillow</a>. It may have changed.</div>'
     : '<div style="font-size:10px;color:#9ca3af;">Rentcast estimate · Range: $'+s.rentRangeLow.toLocaleString()+' – $'+s.rentRangeHigh.toLocaleString()+'</div>';
   const metaRow = [bedsStr,sqftStr,ppsf].filter(Boolean).join(' · ');
   const hoaBadge = s.hoa
@@ -1069,7 +1069,7 @@ function placeComps(comps) {
     const isActive=c.status==='Active';
     const m=L.marker([c.latitude,c.longitude],{icon:compIcon(c.status)});
     const badgeStyle=isActive?'background:#dff2e8;color:#2a7a4a;':'background:#F3EBE3;color:#7A4E2D;';
-    const sqftStr=c.squareFootage?c.squareFootage.toLocaleString()+' sqft':'—';
+    const sqftStr=c.squareFootage?c.squareFootage.toLocaleString()+' sqft':'-';
     const ppsf=c.squareFootage?'$'+(c.price/c.squareFootage).toFixed(2)+'/sqft':'';
     const dom=c.daysOnMarket!=null?c.daysOnMarket+' DOM':'';
     const dist=currentSubject?distMi(currentSubject.lat,currentSubject.lng,c.latitude,c.longitude).toFixed(2)+' mi':'';
@@ -1095,7 +1095,7 @@ function placeComps(comps) {
   });
 }
 
-// ── History cache — keyed by address, survives the session ──
+// ── History cache - keyed by address, survives the session ──
 const historyCache = {};
 
 async function fetchRentHistory(address,historyDivId) {
@@ -1111,14 +1111,14 @@ async function fetchRentHistory(address,historyDivId) {
     ]); return;
   }
 
-  // Serve from cache — zero API calls on repeat clicks
+  // Serve from cache - zero API calls on repeat clicks
   if(historyCache[address]) {
     el.innerHTML=historyCache[address]; return;
   }
 
   try {
     const base=apiKey.replace(/\/$/,'');
-    // Single call — inactive listings give us full history (listed + removed dates per record)
+    // Single call - inactive listings give us full history (listed + removed dates per record)
     const res=await fetch(`${base}/rentcast/listings/rental/long-term?address=${encodeURIComponent(address)}&status=Inactive&limit=20`);
     let history=[];
     if(res.ok) {
@@ -1152,11 +1152,11 @@ function renderHistoryTable(history) {
   const sorted=[...history].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,10);
   const rows=sorted.map((h,i)=>{
     const d=h.date?new Date(h.date):null;
-    const dateStr=d?`${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${String(d.getFullYear()).slice(-2)}`:'—';
+    const dateStr=d?`${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${String(d.getFullYear()).slice(-2)}`:'-';
     const evt=abbreviateEvent(h.event||h.type||h.listingType||h.status||'');
     const evtClass=evt==='Listed'?'ph-listed':evt==='Removed'?'ph-removed':/price/i.test(evt)?'ph-changed':'';
     const rawPrice=h.price??h.listingPrice??h.rent??h.amount??null;
-    const priceStr=rawPrice?'$'+Math.round(rawPrice).toLocaleString():'—';
+    const priceStr=rawPrice?'$'+Math.round(rawPrice).toLocaleString():'-';
     let daysStr='';
     if(i<sorted.length-1&&sorted[i+1].date){const days=Math.round(Math.abs(new Date(sorted[i].date)-new Date(sorted[i+1].date))/86400000);daysStr=`<span style="color:#9ca3af;font-size:9px;"> · ${days}d</span>`;}
     return `<tr><td>${dateStr}</td><td class="${evtClass}">${evt}${daysStr}</td><td>${priceStr}</td></tr>`;
@@ -1208,14 +1208,14 @@ function updateStats(comps) {
   const included = comps.filter(c=>!excluded.has(c.id));
   const excCount = comps.length - included.length;
   document.getElementById('s-count').textContent = included.length + (excCount ? ` (${excCount} excl.)` : '');
-  if(!included.length){['s-median','s-range-stat','s-sqft'].forEach(id=>document.getElementById(id).textContent='—');updateCompEstimate(null);return;}
+  if(!included.length){['s-median','s-range-stat','s-sqft'].forEach(id=>document.getElementById(id).textContent='-');updateCompEstimate(null);return;}
   const rents=included.map(c=>c.price).sort((a,b)=>a-b);
   const mid=Math.floor(rents.length/2);
   const median=rents.length%2===0?Math.round((rents[mid-1]+rents[mid])/2):rents[mid];
   document.getElementById('s-median').textContent='$'+median.toLocaleString();
   document.getElementById('s-range-stat').textContent='$'+Math.min(...rents).toLocaleString()+'–$'+Math.max(...rents).toLocaleString();
   const ws=included.filter(c=>c.squareFootage);
-  document.getElementById('s-sqft').textContent=ws.length?'$'+(ws.reduce((a,c)=>a+(c.price/c.squareFootage),0)/ws.length).toFixed(2):'—';
+  document.getElementById('s-sqft').textContent=ws.length?'$'+(ws.reduce((a,c)=>a+(c.price/c.squareFootage),0)/ws.length).toFixed(2):'-';
   document.getElementById('stats-strip').classList.add('visible');
   const subjectPrice = currentSubject ? (currentSubject.askingPrice||currentSubject.rent) : null;
   updateCompEstimate(included, median, Math.min(...rents), Math.max(...rents));
@@ -1295,7 +1295,7 @@ function updateCompList(comps) {
   const wrap=document.getElementById('comp-list-wrap');
   const included=comps.filter(c=>!excluded.has(c.id));
   const excl=comps.filter(c=>excluded.has(c.id));
-  if(!comps.length){wrap.innerHTML='<div class="empty-state">No comps in view — try zooming out.</div>';return;}
+  if(!comps.length){wrap.innerHTML='<div class="empty-state">No comps in view. Try zooming out.</div>';return;}
   const sorted=[...included].sort((a,b)=>b.price-a.price);
   const exclSorted=[...excl].sort((a,b)=>b.price-a.price);
 
@@ -1364,10 +1364,10 @@ function generateReport() {
   const median = rents.length%2===0 ? Math.round((rents[mid-1]+rents[mid])/2) : rents[mid];
   const minRent = Math.min(...rents);
   const maxRent = Math.max(...rents);
-  // v5.26: PDF Comp estimate = same formula as live UI — simple average of
+  // v5.26: PDF Comp estimate = same formula as live UI - simple average of
   // included rents. See live UI block for full rationale.
   // avgPpsf still computed below ONLY because it's still displayed in the
-  // stats grid as "Avg $/sqft" — that's a legitimate per-sqft data point;
+  // stats grid as "Avg $/sqft" - that's a legitimate per-sqft data point;
   // it just shouldn't be back-applied to subject sqft to derive compEstimate.
   const withSqft = included.filter(c=>c.squareFootage);
   const avgPpsf = withSqft.length ? withSqft.reduce((a,c)=>a+(c.price/c.squareFootage),0)/withSqft.length : 0;
@@ -1386,15 +1386,15 @@ function generateReport() {
 
   const compRows = [...included].sort((a,b)=>b.price-a.price).map(c=>{
     const isActive = c.status==='Active';
-    const ppsf = c.squareFootage ? '$'+(c.price/c.squareFootage).toFixed(2) : '—';
+    const ppsf = c.squareFootage ? '$'+(c.price/c.squareFootage).toFixed(2) : '-';
     const dist = distMi(currentSubject.lat,currentSubject.lng,c.latitude,c.longitude).toFixed(2);
     return `<tr>
       <td><a href="https://www.zillow.com/homes/for_rent/${encodeURIComponent(c.formattedAddress)}_rb/" target="_blank" style="color:#0E0E10;text-decoration:none;font-weight:500;">${c.formattedAddress}</a></td>
       <td style="text-align:center;">${c.bedrooms||'?'}/${c.bathrooms||'?'}</td>
-      <td style="text-align:center;">${c.squareFootage?c.squareFootage.toLocaleString():'—'}</td>
+      <td style="text-align:center;">${c.squareFootage?c.squareFootage.toLocaleString():'-'}</td>
       <td style="text-align:center;font-weight:600;">$${c.price.toLocaleString()}</td>
       <td style="text-align:center;">${ppsf}</td>
-      <td style="text-align:center;">${c.daysOnMarket!=null?c.daysOnMarket:'—'}</td>
+      <td style="text-align:center;">${c.daysOnMarket!=null?c.daysOnMarket:'-'}</td>
       <td style="text-align:center;"><span style="background:${isActive?'#dff2e8':'#F3EBE3'};color:${isActive?'#2a7a4a':'#7A4E2D'};padding:2px 8px;border-radius:10px;font-size:11px;">${isActive?'Active':'Closed'}</span></td>
       <td style="text-align:center;">${dist} mi</td>
     </tr>`;
@@ -1403,16 +1403,16 @@ function generateReport() {
   const exclRows = excl.sort((a,b)=>b.price-a.price).map(c=>`<tr style="color:#6b6660;">
     <td><a href="https://www.zillow.com/homes/for_rent/${encodeURIComponent(c.formattedAddress)}_rb/" target="_blank" style="color:#9ca3af;text-decoration:none;">${c.formattedAddress}</a></td>
     <td style="text-align:center;">${c.bedrooms||'?'}/${c.bathrooms||'?'}</td>
-    <td style="text-align:center;">${c.squareFootage?c.squareFootage.toLocaleString():'—'}</td>
+    <td style="text-align:center;">${c.squareFootage?c.squareFootage.toLocaleString():'-'}</td>
     <td style="text-align:center;">$${c.price.toLocaleString()}</td>
-    <td style="text-align:center;">${c.squareFootage?'$'+(c.price/c.squareFootage).toFixed(2):'—'}</td>
-    <td style="text-align:center;">${c.daysOnMarket!=null?c.daysOnMarket:'—'}</td>
+    <td style="text-align:center;">${c.squareFootage?'$'+(c.price/c.squareFootage).toFixed(2):'-'}</td>
+    <td style="text-align:center;">${c.daysOnMarket!=null?c.daysOnMarket:'-'}</td>
     <td style="text-align:center;"><span style="background:#fee2e2;color:#dc2626;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;">Excluded</span></td>
     <td style="text-align:center;">${distMi(currentSubject.lat,currentSubject.lng,c.latitude,c.longitude).toFixed(2)} mi</td>
   </tr>`).join('');
 
   const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"/>
-  <title>RentalComp Report — ${currentSubject.address}</title>
+  <title>RentalComp Report: ${currentSubject.address}</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
     *{box-sizing:border-box;margin:0;padding:0;}
@@ -1516,18 +1516,18 @@ function generateReport() {
   </div>
   </body></html>`;
 
-  // Blob URL — works on mobile (window.open+document.write is blocked as popup)
+  // Blob URL - works on mobile (window.open+document.write is blocked as popup)
   const blob = new Blob([html], {type:'text/html'});
   const blobUrl = URL.createObjectURL(blob);
   const newWin = window.open(blobUrl, '_blank');
   if(!newWin) {
-    // Popup blocked — force download
+    // Popup blocked - force download
     const a = document.createElement('a');
     a.href = blobUrl; a.download = 'RentalComp-Report.html';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
   }
   // v5.23: removed newWin.print() auto-trigger per canonical "no auto-print" rule.
-  // User taps print themselves — modern viewers (Chrome/Safari/iOS) all expose
+  // User taps print themselves - modern viewers (Chrome/Safari/iOS) all expose
   // share/print from the new tab natively.
   setTimeout(()=>URL.revokeObjectURL(blobUrl), 60000);
 }
@@ -1565,8 +1565,8 @@ document.addEventListener('DOMContentLoaded',()=>{
       <div class="exp-section">
         <h3>Why it matters</h3>
         <div class="exp-why">
-          Most rental estimates blend <em>every listing</em> in the area — luxury, short-term, outliers all averaged in. RentalComp shows you the comps and lets you decide which count.
-          <div class="kicker">Your judgment is the difference — <em>don't be average</em>.</div>
+          Most rental estimates blend <em>every listing</em> in the area: luxury, short-term, outliers all averaged in. RentalComp shows you the comps and lets you decide which count.
+          <div class="kicker">Your judgment is the difference: <em>don't be average</em>.</div>
         </div>
       </div>
 
@@ -1574,7 +1574,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         <h3>How it works</h3>
         <ol class="exp-steps">
           <li>Enter any property address</li>
-          <li>See every nearby comp on a map — active and recently closed</li>
+          <li>See every nearby comp on a map: active and recently closed</li>
           <li>Exclude irrelevant comps; get a clean rent estimate based on what matters</li>
         </ol>
         <div class="exp-bonus"><strong>Plus:</strong> print-ready PDF reports for clients and partners.</div>
@@ -1604,7 +1604,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 function showExplainer() { document.getElementById('explainer').classList.add('visible'); document.body.style.overflow='hidden'; }
 function hideExplainer() { document.getElementById('explainer').classList.remove('visible'); document.body.style.overflow=''; }
 function focusGateForm() {
-  // If gate is hidden (key valid), nothing to focus — modal closes is enough
+  // If gate is hidden (key valid), nothing to focus - modal closes is enough
   // If gate visible, focus first field
   const gate = document.getElementById('gate');
   if (gate && gate.style.display !== 'none') {

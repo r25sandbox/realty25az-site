@@ -1,5 +1,5 @@
-// eec.js — Equity Extraction Calculator
-// v1.8.11 | 2026-04-20 | PDF hero: cash-out equal to CF — two columns, labeled, matching panel
+// eec.js - Equity Extraction Calculator
+// v1.8.11 | 2026-04-20 | PDF hero: cash-out equal to CF - two columns, labeled, matching panel
 //                         Commit: PDF cash-out elevated to match CF prominence
 //                         slider-ltv replaces CF in stats row; print opens new tab, no dialog;
 //                         report title "Cash Out" not "Equity Extraction"
@@ -9,9 +9,9 @@
 //                        Commit: EEC print report matches RIC style
 //                        Commit: overwrite save confirmation flash
 // v1.8.6 | 2026-04-18 | savedLTV in card row and PDF; plain English binding labels
-//                        Commit: fix slider restore on load — remove setTimeout re-run
+//                        Commit: fix slider restore on load - remove setTimeout re-run
 // v1.8.3 | 2026-04-18 | Save slider position as savedExtract; Load restores to savedExtract
-//                        fix applyInputs (remove renderSaves/scroll — click handler owns UI);
+//                        fix applyInputs (remove renderSaves/scroll - click handler owns UI);
 //                        reset slider to 0 on load for clean predictable state;
 //                        add ?v=18 cache-bust in HTML
 //                        Commit: fix load/overwrite/del ID bug; clean applyInputs
@@ -193,7 +193,7 @@
     var lt=gi('loantype'); if(lt&&inp.loantype) lt.value=inp.loantype;
     activeId=id||null;
     run();
-    // Set slider AFTER run() — run() may clamp it, so force the value here
+    // Set slider AFTER run() - run() may clamp it, so force the value here
     var sl=gi('slider');
     if(sl && targetExtract!==undefined){
       sl.value=targetExtract;
@@ -201,7 +201,7 @@
     }
   }
 
-  // overwrite — identical pattern to RIC
+  // overwrite - identical pattern to RIC
   function doOverwrite(id){
     var arr=loadSaves();
     var idx=-1; for(var i=0;i<arr.length;i++){if(String(arr[i].id)===String(id)){idx=i;break;}}
@@ -221,7 +221,7 @@
     writeSaves(arr); renderSaves(); flashRow(id);
   }
 
-  // Brief green background flash on the saved row — fades out in 600ms
+  // Brief green background flash on the saved row - fades out in 600ms
   function flashRow(id){
     var list=gi('eec-saves-list');
     if(!list) return;
@@ -253,7 +253,7 @@
       var cfCol=dispCF>=0?'#1E8449':'#B42318';
       var ltLabel=inp.loantype==='30io'?'Interest Only':'30yr Fixed';
       var ltvStr=s.savedLTV!==undefined?' &middot; '+s.savedLTV+'% LTV':'';
-      // 3-col input grid rows — alternating background matching RIC
+      // 3-col input grid rows - alternating background matching RIC
       var r0='border-bottom:1px solid #e8e5e0';
       var ra='background:#f8f8f8;'+r0;
       rows+=''
@@ -326,7 +326,7 @@
     var url=URL.createObjectURL(blob);
     var w=window.open(url,'_blank');
     if(!w){
-      // Popup blocked — fall back to download
+      // Popup blocked - fall back to download
       var a=document.createElement('a');
       a.href=url; a.download='CashOut-Report-'+new Date().toISOString().slice(0,10)+'.html';
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
@@ -398,7 +398,7 @@
       gi('body-sv').addEventListener('click',function(e){
         var el=e.target.closest('[data-act]');
         if(!el) return;
-        var id=el.getAttribute('data-id');  // keep as STRING — parseInt corrupts large timestamps
+        var id=el.getAttribute('data-id');  // keep as STRING - parseInt corrupts large timestamps
         var act=el.getAttribute('data-act');
         if(act==='load'){
           var arr=loadSaves();

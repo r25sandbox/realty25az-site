@@ -1,4 +1,4 @@
-// ric.js — REI Calc external script
+// ric.js - REI Calc external script
 // v5.3  2026-04-19  ROOT CAUSE FOUND: Both REI Calc and Equity Calc are on the same
 //                   Carrd page. They share id="taxes", "ins", "maint", "hoa", "mgmt".
 //                   document.getElementById returned EEC's element (first in DOM),
@@ -21,7 +21,7 @@
   var ICO_PRINT='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 8V3h10v5"/><rect x="4" y="8" width="16" height="8"/><path d="M7 14h10v7H7z"/></svg>';
 
   // ── Helpers ───────────────────────────────────────────────────────────────
-  // Scoped lookup — only finds elements inside RIC wrap, avoids collision with
+  // Scoped lookup - only finds elements inside RIC wrap, avoids collision with
   // Equity Calc on same Carrd page (both use id="taxes", "ins", "maint", etc.)
   var _wrap=null;
   function getWrap(){ if(!_wrap) _wrap=document.getElementById('ric-wrap'); return _wrap; }
@@ -357,7 +357,7 @@
     });
     var lt=gi('loantype'); if(lt) lt.addEventListener('change',run);
 
-    // Delegation on RIC wrap only — NOT document (avoids catching EEC events)
+    // Delegation on RIC wrap only - NOT document (avoids catching EEC events)
     var wrap=getWrap();
     if(wrap){
       var inputIds=['price','down','rent','rate','appr','vacancy','taxes','ins','maint','hoa','mgmt'];
