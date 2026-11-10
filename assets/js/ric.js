@@ -17,6 +17,9 @@
 
 (function(){
 
+  var ICO_SAVE='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h11l5 5v13H5V3z"/><path d="M8 3v6h8"/><path d="M8 21v-6h8v6"/></svg>';
+  var ICO_PRINT='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 8V3h10v5"/><rect x="4" y="8" width="16" height="8"/><path d="M7 14h10v7H7z"/></svg>';
+
   // ── Helpers ───────────────────────────────────────────────────────────────
   // Scoped lookup — only finds elements inside RIC wrap, avoids collision with
   // Equity Calc on same Carrd page (both use id="taxes", "ins", "maint", etc.)
@@ -269,7 +272,7 @@
       ?'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Active</span>'
       :'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#ffffff;color:#0E0E10;border:1px solid #0E0E10;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Load</span>';
     var saveBtn=isActive
-      ?'<span data-id="'+s.id+'" data-act="overwrite" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:13px;cursor:pointer" title="Update save">&#128190;</span>'
+      ?'<span data-id="'+s.id+'" data-act="overwrite" class="tool-ico" title="Update save" aria-label="Update save">'+ICO_SAVE+'</span>'
       :'';
     return '<div style="'+rowStyle+'">'
       +'<div style="flex:1;min-width:0">'
@@ -280,7 +283,7 @@
       +'</div>'
       +'<span style="display:flex;gap:5px;flex-shrink:0">'
       +loadBtn+saveBtn
-      +'<span data-id="'+s.id+'" data-act="print" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:13px;cursor:pointer">&#128424;</span>'
+      +'<span data-id="'+s.id+'" data-act="print" class="tool-ico" title="Print" aria-label="Print">'+ICO_PRINT+'</span>'
       +'<span data-id="'+s.id+'" data-act="del" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">&#10005;</span>'
       +'</span></div>';
   }
@@ -303,7 +306,7 @@
         +'<div id="hdr-sv" style="padding:14px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between">'
         +'<font id="sv-title" color="#111113" style="font-size:11px;font-weight:700;letter-spacing:.08em">SAVED: 0</font>'
         +'<span style="display:flex;align-items:center;gap:8px">'
-        +'<span id="print-all-btn" style="font-size:14px;cursor:pointer;padding:3px 8px;background:#0E0E10;color:#ffffff;border-radius:0;line-height:1" title="Print all">&#128424;</span>'
+        +'<span id="print-all-btn" class="tool-ico" title="Print all" aria-label="Print all">'+ICO_PRINT+'</span>'
         +'<font id="arr-sv" color="#4D4D55" style="font-size:13px">&#9658;</font>'
         +'</span></div>'
         +'<div id="body-sv" style="display:none;padding:0 16px 16px">'
@@ -340,7 +343,7 @@
     var floatAnchor=gi('save-float-anchor');
     if(floatAnchor){
       floatAnchor.innerHTML='<div style="text-align:right;margin-bottom:8px">'
-        +'<span id="btn-save" style="display:inline-block;font-size:18px;cursor:pointer;padding:4px 10px;background:#0E0E10;color:#ffffff;border-radius:0;line-height:1" title="Save current calc">&#128190;</span>'
+        +'<span id="btn-save" class="tool-ico" title="Save current calc" aria-label="Save current calc">'+ICO_SAVE+'</span>'
         +'</div>';
       gi('btn-save').addEventListener('click',doSave);
     }

@@ -72,6 +72,11 @@ header { background: #0E0E10; border-bottom: 1px solid rgba(255,255,255,.15); pa
   font-size: 16px; color: var(--text2);
 }
 .btn-toggle:hover { background: var(--border); }
+.btn-toggle.ico-plain { background: transparent; border-color: transparent; color: #0E0E10; }
+.btn-toggle.ico-plain:hover { background: rgba(14,14,16,.08); border-color: transparent; }
+.btn-toggle.ico-plain svg { display: block; }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.btn-toggle:focus-visible{outline:2px solid #0E0E10;outline-offset:3px}
+header :focus-visible{outline-color:#fff}
 
 .panel-body { flex: 1; overflow-y: auto; background: var(--surface); padding: 12px; }
 
@@ -280,7 +285,7 @@ header .what-trigger:hover { color: #C3CAD4; }
       </div>
       <button class="btn-go" id="search-btn" onclick="doSearch()">Go</button>
       <div class="btn-toggle" id="toggle-btn" onclick="togglePanel()" aria-label="Toggle menu" style="font-size:16px;letter-spacing:-1px;">☰</div>
-      <div class="btn-toggle" id="pdf-btn" onclick="generateReport()" title="Print / Save PDF" style="display:none;">🖨</div>
+      <div class="btn-toggle ico-plain" id="pdf-btn" onclick="generateReport()" title="Print / Save PDF" aria-label="Print or save PDF" style="display:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M7 8V3h10v5"/><rect x="4" y="8" width="16" height="8"/><path d="M7 14h10v7H7z"/></svg></div>
     </div>
     <div class="panel-body">
       <div class="subject-card" id="subject-card">
