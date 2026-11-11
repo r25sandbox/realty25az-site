@@ -72,7 +72,7 @@
       taxes:    gvf('taxes',    3600),
       ins:      gvf('ins',      1800),
       hoa:      gvf('hoa',      0),
-      mgmt:     gvf('mgmt',     0),
+      mgmt:     gvf('mgmt',     125),
       maint:    gvf('maint',    1200)
     };
   }
@@ -89,7 +89,8 @@
     if(incomeAvail<=0){
       maxLoanCF=0;
     } else if(inp.loantype==='30io'){
-      maxLoanCF=mr>0?incomeAvail/mr:0;
+      // At 0% the interest payment is 0, so cash flow does not cap the loan.
+      maxLoanCF=mr>0?incomeAvail/mr:(maxLoanLTV+1);
     } else {
       var np=360,ppd=mr>0?(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1):1/360;
       maxLoanCF=incomeAvail/ppd;
@@ -125,7 +126,7 @@
 
   function updateSlider(){
     var s=_state;
-    if(!s||!s.refirate) return;
+    if(!s || s.refirate==null || !isFinite(s.refirate)) return;
     var sliderEl=gi('slider');
     if(!sliderEl) return;
     var extract=parseFloat(sliderEl.value)||0;
@@ -147,9 +148,9 @@
     if(barEl){barEl.style.width=pct+'%';barEl.style.background=cf>=0?'#1E8449':'#B42318';}
     var statusEl=gi('slider-status');
     if(statusEl){
-      if(newLoan>ltv80){statusEl.innerHTML='&#9888; Exceeds 80% LTV &#8212; lender approval unlikely';statusEl.style.color='#B42318';}
+      if(newLoan>ltv80){statusEl.innerHTML='&#9888; Exceeds 80% LTV. Lender approval is unlikely.';statusEl.style.color='#B42318';}
       else if(cf>=0){statusEl.innerHTML='&#10003; Cash flow positive at this extraction';statusEl.style.color='#1E8449';}
-      else{statusEl.innerHTML='&#10007; Cash flow negative &#8212; reduce extraction';statusEl.style.color='#B42318';}
+      else{statusEl.innerHTML='&#10007; Cash flow is negative. Reduce the cash out.';statusEl.style.color='#B42318';}
     }
   }
 
@@ -296,7 +297,7 @@
     }
     var dateStr=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
     var html='<!DOCTYPE html><html><head><meta charset="UTF-8">'
-      +'<title>Cash Out &#8212; Scenario Comparison</title>'
+      +'<title>Cash Out: Scenario Comparison</title>'
       +'<style>'
       +'*{box-sizing:border-box;margin:0;padding:0}'
       +'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#111113;padding:32px;max-width:860px;margin:0 auto}'
@@ -313,7 +314,7 @@
       +'<div class="page-hdr">'
       +'<div><div class="brand">Realty <span>25</span> AZ</div>'
       +'<div class="brand-sub">DESIGNATED BROKER: ALIK LEVIN &middot; 480.920.2273 &middot; REALTY25AZ.COM</div></div>'
-      +'<div><div class="page-title">Cash Out &#8212; Scenario Comparison</div>'
+      +'<div><div class="page-title">Cash Out: Scenario Comparison</div>'
       +'<div class="page-date">'+dateStr+'</div></div>'
       +'</div>'
       +rows

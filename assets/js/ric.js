@@ -66,6 +66,20 @@
     return{pv:pv,eq:pv-bal};
   }
 
+  // 30-year term. At 0% a fixed loan pays principal in equal months.
+  // Interest-only at 0% has no monthly payment. Avoids divide-by-zero.
+  function monthlyPayment(loan, annualRate, io){
+    if(!(loan>0) || !isFinite(loan)) return 0;
+    var mr=annualRate/100/12, np=360;
+    if(!(mr>0) || !isFinite(mr)) return io ? 0 : loan/np;
+    if(io) return loan*mr;
+    var pow=Math.pow(1+mr,np);
+    var denom=pow-1;
+    if(!(denom>0) || !isFinite(pow)) return loan/np;
+    var pmt=loan*(mr*pow)/denom;
+    return isFinite(pmt) ? pmt : loan/np;
+  }
+
   // ── Run ───────────────────────────────────────────────────────────────────
   function run(){
     var price=gv('price'),down=gv('down'),rent=gv('rent'),rate=gv('rate'),appr=gv('appr'),
@@ -73,7 +87,7 @@
         hoa=gv('hoa'),mgmt=gv('mgmt');
     var ltEl=gi('loantype'),loantype=ltEl?ltEl.value:'30fixed';
     if(!price){price=500000;down=100000;rent=3000;rate=6.5;appr=5;vac=5;
-               taxes=3000;ins=1200;maint=1200;hoa=150;mgmt=0;loantype='30fixed';}
+               taxes=3000;ins=1200;maint=1200;hoa=150;mgmt=125;loantype='30fixed';}
 
     set('th','\u2248 '+fm(taxes/12)+'/mo');
     set('ih','\u2248 '+fm(ins/12)+'/mo');
@@ -82,10 +96,9 @@
     if(ltvEl&&price>0) ltvEl.textContent=Math.round((price-down)/price*100)+'%';
     if(downEl&&price>0) downEl.textContent=Math.round(down/price*100)+'%';
 
-    var loan=Math.max(price-down,0),mr=rate/100/12,np=360,mpi=0;
+    var loan=Math.max(price-down,0),mr=rate/100/12;
     var io=loantype==='30io';
-    if(io){ mpi=loan*mr; }
-    else{ if(mr>0&&loan>0) mpi=loan*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1); }
+    var mpi=monthlyPayment(loan, rate, io);
 
     var effRent=rent*(1-vac/100),mgmtFee=mgmt;
     var totalExp=mpi+taxes/12+ins/12+maint/12+hoa+mgmtFee;
@@ -126,9 +139,9 @@
   }
 
   function computeSnapshot(inp){
-    var loan=Math.max(inp.price-inp.down,0),mr=inp.rate/100/12,np=360,mpi=0;
+    var loan=Math.max(inp.price-inp.down,0),mr=inp.rate/100/12;
     var io=inp.loantype==='30io';
-    if(io){mpi=loan*mr;}else{if(mr>0&&loan>0)mpi=loan*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1);}
+    var mpi=monthlyPayment(loan, inp.rate, io);
     var effRent=inp.rent*(1-inp.vac/100),mgmtFee=inp.mgmt;
     var totalExp=mpi+inp.taxes/12+inp.ins/12+inp.maint/12+inp.hoa+mgmtFee;
     var mcf=effRent-totalExp,coc=inp.down>0?(mcf*12/inp.down)*100:0;
