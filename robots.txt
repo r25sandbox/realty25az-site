@@ -40,4 +40,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://realty25az.com/sitemap.xml
+Sitemap: https://www.realty25az.com/sitemap.xml
