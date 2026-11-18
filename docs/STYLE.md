@@ -18,5 +18,5 @@ No em dashes. Use a period, comma, colon, or parentheses. Keep an en dash only i
 ## Quotes
 One quote call-out tile per guide or article.
 
-## Preview
-Each page carries `<!-- PREVIEW-NOINDEX: remove at go-live -->` and `<meta name="robots" content="noindex, nofollow">` until the live domain is connected. Remove that comment and meta in one pass at the flip. Do not add a CNAME before then.
+## Domain
+The live site is `https://www.realty25az.com/`. Canonicals, the sitemap, and Open Graph URLs use that host. The 404 page stays `noindex`.

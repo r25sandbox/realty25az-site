@@ -48,7 +48,7 @@ For preview form tests, Worker `ALLOWED_ORIGIN` must include `https://r25sandbox
 4. In Cloudflare DNS: set apex A records to GitHub Pages (`185.199.108.153`, `.109.153`, `.110.153`, `.111.153`) and `www` CNAME to `r25sandbox.github.io`, with proxy OFF (DNS only) until GitHub issues the certificate.
 5. Add custom domain `realty25az.com` in the repo Pages settings (add CNAME file at that time only). Wait for cert. Enforce HTTPS.
 6. Then turn Cloudflare proxy ON with SSL mode Full (not Flexible).
-7. Confirm Worker ALLOWED_ORIGIN includes `https://realty25az.com` (and keep github.io if still needed).
+7. Confirm Worker ALLOWED_ORIGIN includes `https://www.realty25az.com` (and keep github.io if still needed).
 8. Keep Carrd live until cutover is confirmed; screenshot prior DNS for rollback.
 9. Submit updated sitemap in Search Console / Bing.
 
