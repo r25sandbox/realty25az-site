@@ -51,12 +51,16 @@
   function initToggle(hdrId,bodyId,arrId){
     var hdr=gi(hdrId),body=gi(bodyId),arr=gi(arrId);
     if(!hdr||!body||!arr) return;
-    hdr.addEventListener('click',function(e){
-      if(e.target.closest('[data-act],[id^="btn-"],[id$="-btn"]')) return;
+    function toggle(e){
+      if(e && e.target.closest('[data-act],.tool-ico')) return;
       var open=body.style.display==='block';
       body.style.display=open?'none':'block';
       arr.textContent=open?'\u25B6':'\u25BC';
-    });
+      if(hdr.hasAttribute('aria-controls')) hdr.setAttribute('aria-expanded',open?'false':'true');
+    }
+    hdr.addEventListener('click',toggle);
+    var arrowBtn=arr.closest('button');
+    if(arrowBtn && arrowBtn!==hdr) arrowBtn.addEventListener('click',toggle);
   }
 
   // ── Equity calc ───────────────────────────────────────────────────────────
@@ -180,7 +184,12 @@
     activeId=null;
     renderSaves();
     var body=gi('body-sv'),arrEl=gi('arr-sv');
-    if(body&&body.style.display!=='block'){body.style.display='block';if(arrEl)arrEl.textContent='\u25BC';}
+    if(body&&body.style.display!=='block'){
+      body.style.display='block';
+      if(arrEl) arrEl.textContent='\u25BC';
+      var hdr=gi('hdr-sv');
+      if(hdr) hdr.setAttribute('aria-expanded','true');
+    }
   }
 
   function doOverwrite(id){
@@ -282,10 +291,10 @@
       ?'border-top:1px solid #E4E4E7;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;background:rgba(14,14,16,0.06);border-left:3px solid #0E0E10;padding-left:8px;margin-left:-8px'
       :'border-top:1px solid #E4E4E7;padding:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px';
     var loadBtn=isActive
-      ?'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Active</span>'
-      :'<span data-id="'+s.id+'" data-act="load" style="padding:4px 10px;background:#ffffff;color:#0E0E10;border:1px solid #0E0E10;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Load</span>';
+      ?'<button type="button" data-id="'+s.id+'" data-act="load" class="tool-act" style="padding:4px 10px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Active</button>'
+      :'<button type="button" data-id="'+s.id+'" data-act="load" class="tool-act" style="padding:4px 10px;background:#ffffff;color:#0E0E10;border:1px solid #0E0E10;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">Load</button>';
     var saveBtn=isActive
-      ?'<span data-id="'+s.id+'" data-act="overwrite" class="tool-ico" title="Update save" aria-label="Update save">'+ICO_SAVE+'</span>'
+      ?'<button type="button" data-id="'+s.id+'" data-act="overwrite" class="tool-ico" title="Update save" aria-label="Update save">'+ICO_SAVE+'</button>'
       :'';
     return '<div style="'+rowStyle+'">'
       +'<div style="flex:1;min-width:0">'
@@ -294,10 +303,10 @@
       +'<font color="'+mcfCol+'" style="font-size:11px;font-weight:700">'+fms(s.mcf)+'/mo</font>'
       +'<font color="#4D4D55" style="font-size:10px"> &middot; '+pc(s.coc)+' CoC &middot; '+pc(s.cagr3)+' CAGR@3Y</font>'
       +'</div>'
-      +'<span style="display:flex;gap:5px;flex-shrink:0">'
+      +'<span style="display:flex;gap:5px;flex-shrink:0;align-items:center">'
       +loadBtn+saveBtn
-      +'<span data-id="'+s.id+'" data-act="print" class="tool-ico" title="Print" aria-label="Print">'+ICO_PRINT+'</span>'
-      +'<span data-id="'+s.id+'" data-act="del" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">&#10005;</span>'
+      +'<button type="button" data-id="'+s.id+'" data-act="print" class="tool-ico" title="Print" aria-label="Print">'+ICO_PRINT+'</button>'
+      +'<button type="button" data-id="'+s.id+'" data-act="del" class="tool-act" title="Delete" aria-label="Delete" style="padding:4px 9px;background:#0E0E10;color:#ffffff;border-radius:0;font-size:10px;font-weight:700;cursor:pointer">&#10005;</button>'
       +'</span></div>';
   }
 
@@ -316,11 +325,14 @@
     if(panelAnchor){
       panelAnchor.innerHTML=''
         +'<div style="background:#F5F5F5;border:1px solid #E4E4E7;border-radius:0;margin-bottom:12px;overflow:hidden">'
-        +'<div id="hdr-sv" style="padding:14px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between">'
-        +'<font id="sv-title" color="#111113" style="font-size:11px;font-weight:700;letter-spacing:.08em">SAVED: 0</font>'
-        +'<span style="display:flex;align-items:center;gap:8px">'
-        +'<span id="print-all-btn" class="tool-ico" title="Print all" aria-label="Print all">'+ICO_PRINT+'</span>'
-        +'<font id="arr-sv" color="#4D4D55" style="font-size:13px">&#9658;</font>'
+        +'<div style="display:flex;align-items:stretch">'
+        +'<button type="button" id="hdr-sv" class="tool-toggle" aria-expanded="false" aria-controls="body-sv" style="width:auto;flex:1;padding-right:8px">'
+        +'<span id="sv-title" style="color:#111113;font-size:11px;font-weight:700;letter-spacing:.08em">SAVED: 0</span>'
+        +'</button>'
+        +'<span style="display:flex;align-items:center;gap:8px;padding-right:16px">'
+        +'<button type="button" id="print-all-btn" class="tool-ico" title="Print all" aria-label="Print all">'+ICO_PRINT+'</button>'
+        +'<button type="button" class="tool-act" tabindex="-1" aria-hidden="true" style="padding:0;color:#4D4D55;font-size:13px;line-height:1">'
+        +'<span id="arr-sv">&#9658;</span></button>'
         +'</span></div>'
         +'<div id="body-sv" style="display:none;padding:0 16px 16px">'
         +'<div id="saves-list"><font color="#4D4D55" style="font-size:11px">No saved calculations yet.</font></div>'
@@ -356,7 +368,7 @@
     var floatAnchor=gi('save-float-anchor');
     if(floatAnchor){
       floatAnchor.innerHTML='<div style="text-align:right;margin-bottom:8px">'
-        +'<span id="btn-save" class="tool-ico" title="Save current calc" aria-label="Save current calc">'+ICO_SAVE+'</span>'
+        +'<button type="button" id="btn-save" class="tool-ico" title="Save current calc" aria-label="Save current calc">'+ICO_SAVE+'</button>'
         +'</div>';
       gi('btn-save').addEventListener('click',doSave);
     }
