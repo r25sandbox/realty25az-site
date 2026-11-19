@@ -188,6 +188,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .tool-ico{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:#0E0E10;padding:4px 7px;cursor:pointer;line-height:0;border-radius:0;vertical-align:middle}
 .tool-ico:hover{background:rgba(14,14,16,.08)}
 .tool-ico svg{display:block}
+button.tool-ico,button.tool-act,button.tool-toggle{appearance:none;-webkit-appearance:none;margin:0;border:0;background:transparent;font:inherit;cursor:pointer;box-sizing:border-box}
+button.tool-act,button.tool-toggle{color:inherit}
+button.tool-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 16px;text-align:left;line-height:inherit}
+button.tool-ico:focus-visible,button.tool-act:focus-visible,button.tool-toggle:focus-visible{outline:2px solid #0E0E10;outline-offset:2px}
 
 .pull-row{margin:8px 0 36px}
 .pull{margin:0 0 36px;background:#fff;border:1px solid #0E0E10;padding:28px 26px}
