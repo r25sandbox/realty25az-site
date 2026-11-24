@@ -27,6 +27,8 @@ Tenants pay rent to the owner directly. Vendors bill the owner directly. We do n
 - [Self managing (Markdown)](https://www.realty25az.com/guides/self-managing.md)
 - [Questions to ask](https://www.realty25az.com/guides/questions-to-ask/): Questions to ask a property manager before you sign
 - [Questions to ask (Markdown)](https://www.realty25az.com/guides/questions-to-ask.md)
+- [Five filters](https://www.realty25az.com/guides/five-filters/): Five filters for choosing a housing market around a single-family rental
+- [Five filters (Markdown)](https://www.realty25az.com/guides/five-filters.md)
 - [Privacy](https://www.realty25az.com/privacy/)
 - [Owner portal](https://prcllc.atlassian.net/servicedesk/customer/user/requests?page=1): Existing clients
 
