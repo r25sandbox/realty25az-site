@@ -22,8 +22,11 @@ Tenants pay rent to the owner directly. Vendors bill the owner directly. We do n
 - [RentalComp](https://www.realty25az.com/tools/rental-comp/): Rent comps tool
 - [Owner Guides](https://www.realty25az.com/guides/): Numbered guides for rental owners
 - [Find a tenant](https://www.realty25az.com/guides/find-a-tenant/): What it takes to find a tenant, from pricing through move in
+- [Find a tenant (Markdown)](https://www.realty25az.com/guides/find-a-tenant.md)
 - [Self managing](https://www.realty25az.com/guides/self-managing/): Checklist before you fire your manager, and a fair comparison
+- [Self managing (Markdown)](https://www.realty25az.com/guides/self-managing.md)
 - [Questions to ask](https://www.realty25az.com/guides/questions-to-ask/): Questions to ask a property manager before you sign
+- [Questions to ask (Markdown)](https://www.realty25az.com/guides/questions-to-ask.md)
 - [Privacy](https://www.realty25az.com/privacy/)
 - [Owner portal](https://prcllc.atlassian.net/servicedesk/customer/user/requests?page=1): Existing clients
 
