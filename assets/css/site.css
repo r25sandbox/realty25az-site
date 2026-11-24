@@ -208,6 +208,9 @@ button.tool-ico:focus-visible,button.tool-act:focus-visible,button.tool-toggle:f
 .compare th,.compare td{border-bottom:1px solid var(--line);padding:14px 12px;text-align:left;vertical-align:top}
 .compare th{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--label);font-weight:600}
 .compare td:first-child{font-weight:600;width:22%}
+.facts{margin:0 0 1em}
+.facts dt{font-weight:700;margin-top:14px}
+.facts dd{margin:2px 0 0}
 .signs{margin:0;padding-left:1.2em}
 .signs li{margin:0 0 10px}
 @media(max-width:700px){
