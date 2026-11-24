@@ -217,3 +217,58 @@ button.tool-ico:focus-visible,button.tool-act:focus-visible,button.tool-toggle:f
 .hub-thumb{margin:-24px -24px 18px;height:76px}
 .compare td:first-child{width:auto}
 }
+
+/* Market tape and quote strip. Layout, type, and motion follow the approved mockup. */
+.r25-tape-slot{min-height:36px;background:#0E0E10}
+.r25-strip-slot{min-height:139px;background:#fff}
+a.r25-tape{background:#0E0E10;color:#fff;border-bottom:1px solid #C8A96E;display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;padding:8px 16px;min-height:36px;font-family:"Archivo",system-ui,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;line-height:1;white-space:nowrap;text-decoration:none;cursor:pointer}
+a.r25-tape:hover{background:#1A1A1E;text-decoration:none;color:#fff}
+a.r25-tape:focus-visible{outline:2px solid #C8A96E;outline-offset:-2px}
+.r25-tape-rate{display:inline-flex;align-items:center;gap:7px;order:0;flex:none}
+.r25-tape-rate-label{color:#B9B2A4;font-weight:600}
+.r25-tape-rate-val{color:#fff;font-weight:800;font-size:12px;letter-spacing:.06em}
+.r25-tape-arrow{font-size:9px;line-height:1}
+.r25-tape-arrow.down{color:#57C785}
+.r25-tape-arrow.up{color:#E5484D}
+.r25-tape-div{width:1px;height:14px;background:rgba(255,255,255,.20);flex:none;margin:0 14px}
+.r25-tape-div.d1{order:1}.r25-tape-div.d2{order:3}
+.r25-tape-areas{display:inline-flex;align-items:center;order:2;flex:none}
+.r25-tape-area{display:inline-flex;align-items:center;gap:6px;padding:0 11px}
+.r25-tape-area:first-child{padding-left:0}
+.r25-tape-area:last-child{padding-right:0}
+.r25-mood{width:7px;height:7px;border-radius:50%;flex:none}
+.r25-mood.renter{background:#8FB8D8}.r25-mood.balanced{background:#CFCFCF}.r25-mood.landlord{background:#E5484D}
+.r25-area-name{color:#fff;font-weight:700}
+.r25-lean{font-style:normal;font-weight:800}
+.r25-lean.renter{color:#8FB8D8}.r25-lean.balanced{color:#CFCFCF}.r25-lean.landlord{color:#E5484D}
+.r25-tape-area-div{width:1px;height:12px;background:rgba(255,255,255,.14);flex:none}
+.r25-tape-date{order:4;flex:none;color:#D8D2C4;font-weight:700}
+.r25-strip{background:#fff;display:flex;align-items:flex-start;justify-content:center;padding:18px 28px 20px;text-align:left}
+.r25-flip{width:100%;max-width:480px;min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.r25-strip .r25-quote{margin:0;width:100%;min-width:0;text-align:left;font-family:"Newsreader",Georgia,serif;font-style:italic;font-weight:500;font-size:19px;line-height:1.35;color:#191919;min-height:4.05em;border:0;padding:0;background:transparent;letter-spacing:0}
+.r25-src{align-self:flex-end;text-align:right;font-family:"Archivo",sans-serif;font-style:normal;font-size:13px;font-weight:600;letter-spacing:.02em;color:#98917F;white-space:nowrap;text-transform:none}
+.r25-fade{animation:r25FadeIn .45s ease both}
+@keyframes r25FadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.r25-fade{animation:none}}
+@media(max-width:760px){
+  a.r25-tape{flex-wrap:wrap;justify-content:space-between;align-content:center;padding:10px 10px 12px;row-gap:9px;height:auto;min-height:0;max-height:none;overflow:visible;font-size:12px;letter-spacing:.02em;line-height:1.25;white-space:normal}
+  .r25-tape-slot{min-height:72px}
+  .r25-strip-slot{min-height:122px}
+  .r25-tape-rate{order:0;gap:6px}
+  .r25-tape-div.d1{display:none}
+  .r25-tape-date{order:1;margin-left:auto}
+  .r25-tape-div.d2{display:none}
+  .r25-tape-areas{order:2;flex:1 1 100%;min-width:0;display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:6px;border-top:1px solid rgba(255,255,255,.14);padding-top:9px;font-size:10px;letter-spacing:0;white-space:nowrap}
+  .r25-tape-area{padding:0;gap:3px;min-width:0;flex:none;white-space:nowrap}
+  .r25-mood{width:6px;height:6px}
+  .r25-tape-area-div{display:none}
+  .r25-tape-rate-val{font-size:12.5px;letter-spacing:.02em}
+  .r25-tape-arrow{font-size:9px}
+  .r25-strip{padding:14px 18px 16px}
+  .r25-flip{gap:6px;max-width:480px}
+  .r25-strip .r25-quote{font-size:16.5px;line-height:1.4;min-height:4.2em}
+  .r25-src{font-size:12.5px}
+}
+@media(max-width:359px){
+  .r25-tape .r25-npre{display:none}
+}
