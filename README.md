@@ -28,7 +28,7 @@ Planned public preview: `https://r25sandbox.github.io/realty25az-site/`
 9. `/tools/cash-flow-calculator/` (ric.js)
 10. `/tools/equity-calculator/` (eec.js)
 11. `/tools/rental-comp/` (copied RentalComp app + pricing)
-12. `/guides/` stub hub
+12. `/guides/` hub. Each guide also has a companion `.md` next to its folder (see `docs/STYLE.md`).
 13. `/privacy/`
 14. `404.html`, `robots.txt`, `sitemap.xml`, `llms.txt`
 
