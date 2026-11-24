@@ -1,0 +1,26 @@
+{
+  "week_of": "2026-11-25",
+  "week_label": "Week of Nov 25",
+  "href": "https://www.linkedin.com/company/realty25az/posts/",
+  "rate": {
+    "label": "MND 30Y Fixed",
+    "value": "7.33%",
+    "prior": "7.48%",
+    "direction": "down",
+    "delta_pts": 0.15
+  },
+  "areas": [
+    {"label": "N. Scottsdale", "prefix": "N. ", "name": "Scottsdale", "lean": "L"},
+    {"label": "Chandler", "name": "Chandler", "lean": "L"},
+    {"label": "Gilbert", "name": "Gilbert", "lean": "L"},
+    {"label": "N. Phoenix", "prefix": "N. ", "name": "Phoenix", "lean": "L"}
+  ],
+  "quotes": [
+    {"text": "“He usually responded within minutes of sending a text or email.”", "source": "Realty 25 AZ Client"},
+    {"text": "“We received the right level of information at the right time to enable us to make informed, data-driven decisions.”", "source": "Realty 25 AZ Client"},
+    {"text": "“While I can say many great things about Alik's character, skill, responsiveness, etc, it's the results that speak for themselves.”", "source": "Realty 25 AZ Client"},
+    {"text": "“Shared with us his vast network of subcontractors who helped us get the property in top shape fast and on budget.”", "source": "Realty 25 AZ Client"},
+    {"text": "“Very knowledgeable, organized, forward thinking, and stayed on top of things.”", "source": "Realty 25 AZ Client"},
+    {"text": "“Alik was always super prompt in his communication, keeping us informed at every step of the way.”", "source": "Realty 25 AZ Client"}
+  ]
+}
