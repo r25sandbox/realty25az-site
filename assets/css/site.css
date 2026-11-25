@@ -280,7 +280,5 @@ a.r25-tape:focus-visible{outline:2px solid #C8A96E;outline-offset:-2px}
 @media(max-width:640px){
   .r25-strip{padding-bottom:8px}
   .r25-strip-slot{min-height:118px}
-  .hero{padding-top:36px}
-  .hero[style*="padding:96px"]{padding-top:48px !important}
-  .hero[style*="padding:72px"]{padding-top:36px !important}
+  .hero{padding-top:18px !important}
 }
