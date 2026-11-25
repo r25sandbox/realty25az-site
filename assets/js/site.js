@@ -48,4 +48,30 @@
       }
     });
   }
+
+  // iOS Safari shows a Markdown link inline and ignores the download name.
+  // The link still has download set, so it saves without this script elsewhere.
+  var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(ios&&window.fetch){
+    document.querySelectorAll('a.md-download').forEach(function(a){
+      a.addEventListener('click',function(e){
+        var name=a.getAttribute('download');
+        if(!name) return;
+        e.preventDefault();
+        fetch(a.href).then(function(r){return r.blob();}).then(function(blob){
+          var file=new Blob([blob],{type:'application/octet-stream'});
+          var url=URL.createObjectURL(file);
+          var tmp=document.createElement('a');
+          tmp.href=url;
+          tmp.download=name;
+          document.body.appendChild(tmp);
+          tmp.click();
+          tmp.remove();
+          setTimeout(function(){URL.revokeObjectURL(url);},1500);
+        }).catch(function(){
+          window.location.href=a.href;
+        });
+      });
+    });
+  }
 })();
